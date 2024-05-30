@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import '../styles/globals.scss';
 import StateContextProvider from '@/context/StateCtx';
-import { nunito, workSans, poppins } from '@/font';
+import { nunito, workSans, poppins, rama, jaka, podkova } from '@/font';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,7 +17,7 @@ export default function RootLayout({
     <html lang="en">
       <StateContextProvider>
         <body
-          className={`${nunito.className} ${workSans.variable} ${poppins.variable}`}
+          className={`${nunito.variable} ${workSans.variable} ${poppins.variable} ${rama.variable} ${jaka.className} ${podkova.variable} `}
         >
           {children}
         </body>
