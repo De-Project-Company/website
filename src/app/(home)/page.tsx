@@ -1,6 +1,6 @@
 import React from 'react';
-import { HeroSection, AtGlance, PillarSection } from './modules';
-// import { MyComponent } from './modules/rough';git
+import { HeroSection, AtGlance, PillarSection, FaqSection } from './modules';
+// import { MyComponent } from './modules/rough';
 
 const page = () => {
   return (
@@ -8,6 +8,7 @@ const page = () => {
       <HeroSection />
       <AtGlance />
       <PillarSection />
+      <FaqSection />
       {/* <MyComponent /> */}
     </>
   );

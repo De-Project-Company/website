@@ -8,6 +8,12 @@ import { ArrowRight2 } from 'iconsax-react';
 import Link from 'next/link';
 import { handleMouseEnter } from '@/utils/text-effect';
 import useInView from '@/hooks/useInView';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger
+} from '@/components/ui/accordion';
 
 const HeroSection = () => {
   return (
@@ -131,7 +137,7 @@ const PillarSection = () => {
       transition={{ delay: 0.05, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
       className="flex flex-col justify-center items-center bg-sky-50 my-[20px]"
     >
-      <div className="container">
+      <div className="container pb-20">
         <div className="flex flex-col justify-center items-center p-20">
           <div className="flex w-full items-center max-w-[658px] justify-center">
             <div className="arrow">
@@ -215,7 +221,7 @@ const PillarCard = ({
         opacity: isInView ? 1 : 0,
         transition: 'transform 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s'
       }}
-      className="pillar-card"
+      className="pillar-card min-w-[360px] min-h-[413px]"
     >
       <div className="pillar-card2 flex flex-col items-center justify-center min-w-[360px] min-h-[413px]">
         <Image src={image} alt={title} width={112} height={102} />
@@ -245,4 +251,120 @@ const glance = [
   { amount: 10, text: 'Customer satisfaction rate' }
 ];
 
-export { HeroSection, AtGlance, PillarSection };
+const FaqSection = () => {
+  return (
+    <section className="overflow-hidden my-[20px]">
+      <div className="flex justify-center items-center bg-orange-50">
+        <div className="flex gap-5 max-md:flex-col max-md:gap-0 container py-[50px]">
+          <motion.div
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col w-[57%] max-md:ml-0 max-md:w-full"
+          >
+            <Image
+              src="/faqsection.png"
+              alt="illustration"
+              className="self-stretch my-auto w-full aspect-[0.99] max-md:mt-10 max-md:max-w-full"
+              width={616}
+              height={622}
+            />
+          </motion.div>
+          <motion.div
+            initial={{ x: 100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col ml-5 w-[43%] max-md:ml-0 max-md:w-full"
+          >
+            <div className="flex flex-col grow text-base font-medium text-neutral-900 max-md:mt-10 max-md:max-w-full">
+              <div className="text-2xl leading-8 text-center text-orange-500 max-md:max-w-full">
+                As a Community
+              </div>
+              <div className="flex gap-2.5 mt-5 text-6xl leading-[57.6px] text-sky-950 max-md:flex-wrap max-md:text-4xl">
+                <div className="arrow">
+                  <span />
+                  <span />
+                  <span />
+                </div>
+                <div className="max-md:text-4xl font-rama w-full text-center">
+                  Starters House
+                </div>
+              </div>
+              <div className="mt-6 text-sm leading-5 text-justify max-md:max-w-full">
+                At Starters House, tech enthusiasts unite for connection,
+                learning, and growth. Whether you&apos;re a seasoned pro or new
+                to the scene, our supportive community offers a welcoming space
+                to collaborate and thrive. Join us and make Starters House your
+                home in the tech world.
+              </div>
+              <Accordion
+                type="single"
+                collapsible
+                className="w-full space-y-5 mt-5"
+              >
+                {faq.map(faq => (
+                  <AccordionItem value={faq.question} key={faq.id}>
+                    {' '}
+                    <AccordionTrigger className="hover:no-underline">
+                      <div className="flex items-center justify-center gap-3 text-[16px] font-nunito font-bold">
+                        <div className="shrink-0 my-auto w-2 h-2 bg-orange-500 rounded-full" />
+                        {faq.question}
+                      </div>
+                    </AccordionTrigger>
+                    <AccordionContent className="text-sm font-worksans">
+                      {faq.answer}
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+              <button className="justify-center items-center px-3 py-3 mt-14 text-lg font-semibold leading-5 text-center text-white bg-orange-400 rounded font-poppins">
+                Join Startres House
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const faq = [
+  {
+    id: 1,
+    question: 'Welcoming Tech Haven:',
+    answer:
+      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe, voluptas voluptatibus! Consequatur eligendi repudiandae, praesentium sapiente fugiat dolorem? Dignissimos tempore corporis, nemo quia deleniti culpa vero fuga explicabo velit ad!'
+  },
+  {
+    id: 2,
+    question: 'Colaborative Spirit:',
+    answer:
+      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe, voluptas voluptatibus! Consequatur eligendi repudiandae, praesentium sapiente fugiat dolorem? Dignissimos tempore corporis, nemo quia deleniti culpa vero fuga explicabo velit ad!'
+  },
+  {
+    id: 3,
+    question: 'Inclusive Atmosphere:',
+    answer:
+      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe, voluptas voluptatibus! Consequatur eligendi repudiandae, praesentium sapiente fugiat dolorem? Dignissimos tempore corporis, nemo quia deleniti culpa vero fuga explicabo velit ad!'
+  },
+  {
+    id: 4,
+    question: 'Continuous Learning:',
+    answer:
+      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe, voluptas voluptatibus! Consequatur eligendi repudiandae, praesentium sapiente fugiat dolorem? Dignissimos tempore corporis, nemo quia deleniti culpa vero fuga explicabo velit ad!'
+  },
+  {
+    id: 5,
+    question: 'Diverse Perspective:',
+    answer:
+      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe, voluptas voluptatibus! Consequatur eligendi repudiandae, praesentium sapiente fugiat dolorem? Dignissimos tempore corporis, nemo quia deleniti culpa vero fuga explicabo velit ad!'
+  },
+  {
+    id: 6,
+    question: 'Supportive Environment:',
+    answer:
+      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe, voluptas voluptatibus! Consequatur eligendi repudiandae, praesentium sapiente fugiat dolorem? Dignissimos tempore corporis, nemo quia deleniti culpa vero fuga explicabo velit ad!'
+  }
+];
+
+export { HeroSection, AtGlance, PillarSection, FaqSection };
