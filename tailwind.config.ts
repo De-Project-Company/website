@@ -64,6 +64,11 @@ const config = {
         scroll:
           "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
       },
+      fontFamily: {
+        nunito: [`var(--font-nunito)`, "sans-serif"],
+        worksans: [`var(--font-work-sans)`, "sans-serif"],
+        poppins: [`var(--font-poppins)`, "sans-serif"],
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

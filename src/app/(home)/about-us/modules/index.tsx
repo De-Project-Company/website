@@ -1,29 +1,40 @@
 import Image from "next/image";
-import Link from "next/link";
 
 const AboutUs = () => {
   return (
-    <div className="flex flex-col justify-center px-12 pt-5 pb-8 bg-white  max-md:px-5 container rounded-2xl border border-nav-text-active bg-gradient-to-b from-white via-[#fafafd] to-[#cbd2e6]">
+    <div className="flex flex-col justify-center px-12 pt-5 pb-16 bg-white  max-md:px-5 container rounded-2xl border border-nav-text-active bg-gradient-to-b from-white via-[#fafafd] to-[#cbd2e6]">
       <div className="max-md:max-w-full">
         <div className="flex gap-5 max-md:flex-col max-md:gap-0">
           <div className="flex flex-col w-[43%] max-md:ml-0 max-md:w-full">
             <div className="flex flex-col grow max-md:mt-10 max-md:max-w-full">
-              <div className="text-4xl font-semibold leading-9 text-orange-500 max-md:max-w-full font-worksans">
+              <div className="text-2xl font-semibold leading-9 text-orange-500 max-md:max-w-full">
                 Starters House Community
               </div>
-              <div className="flex flex-col justify-center mt-7 max-md:max-w-full">
+              <div className="flex flex-col justify-center mt-5 max-md:max-w-full">
                 <Image
                   src="/aboutimage.png"
                   alt="about image"
                   width={468}
                   height={344}
-                  className="w-full  max-md:max-w-full md:rounded-3xl rounded-xl"
+                  className="w-full aspect-[1.35] max-md:max-w-full md:rounded-3xl rounded-xl"
                 />
               </div>
               <div className="mt-8 text-base leading-7 text-sky-950 max-md:max-w-full">
                 Starters House Community is a thriving ecosystem for tech
                 enthusiasts and professionals. It&apos;s a place where
                 innovation, collaboration, and growth are part of everyday life.
+              </div>
+              <div className="mt-8 text-lg font-medium leading-8 text-orange-500 max-md:max-w-full">
+                Vision and Mission
+              </div>
+              <div className="mt-2.5 text-base leading-7 text-sky-950 max-md:max-w-full">
+                Our vision is to create a world where technology brings people
+                together to solve challenges. Our mission is to provide a
+                platform that fosters learning, innovation, and community
+                spirit.
+              </div>
+              <div className="justify-center items-center px-3 py-1 mt-8 text-base font-medium text-center text-white bg-orange-400 rounded max-md:px-5 max-md:max-w-full">
+                Join the Community
               </div>
             </div>
           </div>
@@ -80,11 +91,18 @@ const AboutUs = () => {
                   </li>
                 </ul>
               </div>
+              <div className="mt-9 max-md:max-w-full">
+                Joining Starters House
+              </div>
+              <div className="mt-3 text-base leading-7 text-blue-600 max-md:max-w-full">
+                Becoming a part of Starters House Community is simple.{" "}
+                <span className="text-blue-700">Sign up</span>,{" "}
+                <span className="text-blue-600">create your profile</span>, and
+                start engaging with a network of tech professionals and
+                enthusiasts who are eager to collaborate and grow together.. 🚀
+              </div>
             </div>
           </div>
-        </div>
-        <div className="w-full justify-end flex text-nav-text-active font-medium">
-          <Link href="/about-us?path=aboutus">Read More</Link>
         </div>
       </div>
     </div>
@@ -95,12 +113,9 @@ const Events = () => {
   return (
     <div className="flex flex-col px-12 pt-2 pb-9 bg-white  max-md:px-5 container rounded-2xl border border-nav-text-active bg-gradient-to-b from-white via-[#fafafd] to-[#cbd2e6]">
       <div className="max-md:max-w-full">
-        <div className="text-4xl font-semibold leading-9 text-orange-500 max-md:max-w-full font-worksans text-center">
-          Upcoming Events at Starters House Community
-        </div>
         <div className="flex gap-5 max-md:flex-col max-md:gap-0">
-          <div className="flex flex-col w-[29%] py-7">
-            <div className="flex flex-col  text-base font-medium leading-5 text-justify text-orange-500 max-md:mt-10">
+          <div className="flex flex-col w-[29%] max-md:ml-0 max-md:w-full">
+            <div className="flex flex-col self-stretch my-auto text-base font-medium leading-5 text-justify text-orange-500 max-md:mt-10">
               <div>Monthly Tech Talks</div>
               <div className="mt-2.5 leading-5 text-sky-950">
                 Engage with industry leaders and innovators as they share
@@ -112,6 +127,11 @@ const Events = () => {
                 bootcamps to design sprints, helping you to upskill in a
                 collaborative environment.
               </div>
+              <div className="mt-10">Webinar Series</div>
+              <div className="mt-2.5 leading-5 text-sky-950">
+                Tune in to our webinars featuring expert panels discussing
+                various tech-related topics, from AI ethics to cloud computing.
+              </div>
               <div className="mt-10">Networking Nights</div>
               <div className="mt-2.5 leading-5 text-sky-950">
                 Connect with peers, mentors, and industry professionals in our
@@ -120,19 +140,30 @@ const Events = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col ml-5 w-[41%]">
-            <div className="flex flex-col grow justify-center items-center px-0.5 py-7 w-full text-center">
+          <div className="flex flex-col ml-5 w-[41%] max-md:ml-0 max-md:w-full">
+            <div className="flex flex-col grow justify-center items-center px-0.5 py-7 w-full text-center bg-indigo-50 bg-opacity-10 max-md:mt-8 max-md:max-w-full">
+              <div className="text-lg font-semibold leading-6 text-orange-500 w-[331px]">
+                Upcoming Events at Starters House Community
+              </div>
+
               <Image
-                src="/events.png"
+                src="/aboutimage.png"
                 alt="about image"
-                width={439}
-                height={485}
-                className="mt-4 w-full max-md:max-w-full max-h-[450px] object-cover"
+                width={468}
+                height={344}
+                className="self-stretch mt-4 w-full aspect-[0.91] max-md:max-w-full"
               />
+
+              <div className="mt-4 text-base leading-5 text-sky-950">
+                Join us for a series of engaging and enriching events designed
+                to foster learning, innovation, and camaraderie within our tech
+                community.
+                <br />
+              </div>
             </div>
           </div>
-          <div className="flex flex-col ml-5 w-[29%]">
-            <div className="flex flex-col py-7 text-base font-medium leading-5 text-orange-500 max-md:mt-10">
+          <div className="flex flex-col ml-5 w-[29%] max-md:ml-0 max-md:w-full">
+            <div className="flex flex-col mt-24 text-base font-medium leading-5 text-orange-500 max-md:mt-10">
               <div>Community Outreach Programs</div>
               <div className="mt-2.5 leading-5 text-justify text-sky-950">
                 Get involved in community service and outreach programs that
@@ -153,8 +184,9 @@ const Events = () => {
           </div>
         </div>
       </div>
-      <div className="w-full justify-end flex text-nav-text-active font-medium">
-        <Link href="/events?path=events">Learn More</Link>
+      <div className="self-center mt-6 text-lg font-medium leading-5 text-center text-zinc-800 max-md:max-w-full">
+        These events are just a glimpse of what we offer at Starters House
+        Community. Let&apos;s innovate and grow together! 🚀
       </div>
     </div>
   );

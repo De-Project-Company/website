@@ -1,8 +1,13 @@
 import React from "react";
-import { NavigationBar } from "@/components/navigation";
+import { AboutUs, Formus, Events } from "@/components/navigation/NavContent";
 
 const page = () => {
-  return <>home</>;
+  return (
+    <>
+      {/* <Formus /> */}
+      {/* <Events /> */}
+    </>
+  );
 };
 
 export default page;

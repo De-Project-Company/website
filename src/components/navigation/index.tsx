@@ -155,11 +155,11 @@ const TABS = [
     Component: AboutUs,
   },
   {
-    title: "Forumms",
+    title: "Forums",
     Component: Formus,
   },
   {
-    title: "Event",
+    title: "Events",
     Component: Events,
   },
 ].map((n, idx) => ({ ...n, id: idx + 1 }));
@@ -247,7 +247,7 @@ const NavigationBar = () => {
             Resources
           </Link>
         </div>
-        <button className="w-[152px] h-[56px] bg-nav-text-active text-nav-text rounded-md hidden lg:flex ">
+        <button className="w-[152px] h-[56px] bg-nav-text-active text-nav-text rounded-md hidden lg:block text-center">
           Get Started
         </button>
         <AnimatePresence>
