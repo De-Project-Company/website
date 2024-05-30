@@ -1,5 +1,5 @@
-import React from "react";
-import { AboutUs } from "@/components/navigation/NavContent";
+import React from 'react';
+import { AboutUs } from '@/components/navigation/NavContent';
 
 const page = () => {
   return (

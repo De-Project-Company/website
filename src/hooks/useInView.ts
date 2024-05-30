@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useEffect, useState, RefObject } from "react";
+import { useEffect, useState, RefObject } from 'react';
 
 interface UseInViewProps {
   ref: RefObject<HTMLElement>;
@@ -28,7 +28,7 @@ const useInView = ({ ref, once = true, isFrames = false }: UseInViewProps) => {
       {
         // root: ref?.current,
         // rootMargin: "100px",
-        threshold: isFrames ? 0.8 : undefined,
+        threshold: isFrames ? 0.8 : undefined
       }
     );
 

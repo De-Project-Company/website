@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import React, { createContext, useContext, useEffect, useMemo } from "react";
+import React, { createContext, useContext, useEffect, useMemo } from 'react';
 
 interface StateContextProps {
   showMobileMenu: boolean;
@@ -24,28 +24,28 @@ const StateContextProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     if (showMobileMenu) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = 'auto';
     }
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
+      if (e.key === 'Escape') {
         setShowMobileMenu(false);
       }
     };
 
-    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener('keydown', handleKeyDown);
     };
   }, [showMobileMenu]);
 
   const value = useMemo(
     () => ({
       showMobileMenu,
-      setShowMobileMenu,
+      setShowMobileMenu
     }),
     [showMobileMenu, setShowMobileMenu]
   );
@@ -59,7 +59,7 @@ export const useStateCtx = () => {
   const ctx = useContext(StateContext);
 
   if (!ctx) {
-    throw new Error("useStateCtx must be used within a StateContextProvider");
+    throw new Error('useStateCtx must be used within a StateContextProvider');
   }
   return ctx;
 };

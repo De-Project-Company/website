@@ -1,8 +1,8 @@
-import { Suspense } from "react";
-import { NavigationBar } from "@/components/navigation";
+import { Suspense } from 'react';
+import { NavigationBar } from '@/components/navigation';
 
 export default function ModeratorLayout({
-  children,
+  children
 }: {
   children: React.ReactNode;
 }) {

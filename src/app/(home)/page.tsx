@@ -1,5 +1,5 @@
-import React from "react";
-import { AboutUs, Formus, Events } from "@/components/navigation/NavContent";
+import React from 'react';
+import { AboutUs, Formus, Events } from '@/components/navigation/NavContent';
 
 const page = () => {
   return (

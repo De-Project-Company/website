@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from 'next/image';
 
 const AboutUs = () => {
   return (
@@ -56,12 +56,12 @@ const AboutUs = () => {
                   <li>
                     <span className="text-orange-400">
                       Continuous Learning:
-                    </span>{" "}
+                    </span>{' '}
                     We are committed to offering resources and events that
                     promote ongoing education and skill development.
                   </li>
                   <li>
-                    <span className="text-orange-400">Service Provision:</span>{" "}
+                    <span className="text-orange-400">Service Provision:</span>{' '}
                     We connect businesses with skilled tech professionals,
                     facilitating a marketplace of talent and opportunity.
                   </li>
@@ -85,7 +85,7 @@ const AboutUs = () => {
                     learning and development.
                   </li>
                   <li>
-                    <span className="text-orange-400">Member Profiles:</span>{" "}
+                    <span className="text-orange-400">Member Profiles:</span>{' '}
                     Personalized profiles that showcase each member’s skills,
                     interests, and contributions to the community
                   </li>
@@ -95,8 +95,8 @@ const AboutUs = () => {
                 Joining Starters House
               </div>
               <div className="mt-3 text-base leading-7 text-blue-600 max-md:max-w-full">
-                Becoming a part of Starters House Community is simple.{" "}
-                <span className="text-blue-700">Sign up</span>,{" "}
+                Becoming a part of Starters House Community is simple.{' '}
+                <span className="text-blue-700">Sign up</span>,{' '}
                 <span className="text-blue-600">create your profile</span>, and
                 start engaging with a network of tech professionals and
                 enthusiasts who are eager to collaborate and grow together.. 🚀
