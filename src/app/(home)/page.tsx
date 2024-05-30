@@ -1,7 +1,8 @@
 import React from "react";
+import { NavigationBar } from "@/components/navigation";
 
 const page = () => {
-  return <div>page</div>;
+  return <>home</>;
 };
 
 export default page;
