@@ -218,10 +218,7 @@ const NavigationBar = () => {
             !isDesktop && 'hidden'
           )}
         >
-          <div
-            onMouseLeave={() => handleSetSelected(null)}
-            className="flex items-center gap-x-5 justify-center"
-          >
+          <div className="flex items-center gap-x-5 justify-center">
             {TABS.map(t => {
               return (
                 <Tab
@@ -236,6 +233,7 @@ const NavigationBar = () => {
             })}
           </div>
           <Link
+            onMouseEnter={() => handleSetSelected(null)}
             href="/resources?path=resources"
             className={cn(
               'flex items-center gap-1 px-3 py-1.5 text-sm transition-colors',

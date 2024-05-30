@@ -1,11 +1,14 @@
 import React from 'react';
-import { AboutUs, Formus, Events } from '@/components/navigation/NavContent';
+import { HeroSection, AtGlance, PillarSection } from './modules';
+// import { MyComponent } from './modules/rough';git
 
 const page = () => {
   return (
     <>
-      {/* <Formus /> */}
-      {/* <Events /> */}
+      <HeroSection />
+      <AtGlance />
+      <PillarSection />
+      {/* <MyComponent /> */}
     </>
   );
 };
