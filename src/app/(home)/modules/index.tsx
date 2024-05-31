@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { cn, shrinkString } from '@/utils';
+import { cn, shrinkString, calculateReadingTime, encryptString } from '@/utils';
 import { ArrowRight2 } from 'iconsax-react';
 import Link from 'next/link';
 import { handleMouseEnter } from '@/utils/text-effect';
@@ -14,6 +14,14 @@ import {
   AccordionItem,
   AccordionTrigger
 } from '@/components/ui/accordion';
+import { members } from '@/constants';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious
+} from '@/components/ui/carousel';
 
 const HeroSection = () => {
   return (
@@ -367,4 +375,329 @@ const faq = [
   }
 ];
 
-export { HeroSection, AtGlance, PillarSection, FaqSection };
+const Trends = () => {
+  const firstBlog = blogdetails.slice(0, 1)[0];
+  const otherBlogs = blogdetails.slice(1);
+  return (
+    <section className="overflow-hidden my-20">
+      <div className="flex flex-col py-14 bg-sky-50 relative">
+        <div
+          className="self-end mt-72 max-w-full aspect-[0.59] w-[644px] max-md:mt-10 absolute bg-no-repeat bg-cover"
+          style={{ backgroundImage: 'url(/arrow.png)' }}
+        />
+        <div className="container ">
+          <div className="flex gap-5 max-md:flex-col max-md:gap-0">
+            <motion.div
+              initial={{ x: -100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{
+                delay: 0.5,
+                duration: 0.75,
+                ease: [0.16, 1, 0.3, 1]
+              }}
+              className="flex flex-col w-[50%] max-md:ml-0"
+            >
+              <div className="flex flex-col grow justify-center">
+                <div className="w-full bg-blue-900 text-base py-2 px-4 text-white">
+                  3 mins Read
+                </div>
+                <div className="flex flex-col justify-center bg-blue-800 max-md:max-w-full">
+                  <Image
+                    src={`/blog/blog${firstBlog.id}.png`}
+                    alt="index"
+                    height={516}
+                    width={680}
+                    className="w-full aspect-[0.93] max-md:max-w-full max-w-[680px] max-h-[516px]"
+                  />
+                </div>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ x: 100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{
+                delay: 0.5,
+                duration: 0.75,
+                ease: [0.16, 1, 0.3, 1]
+              }}
+              className="flex flex-col ml-5 w-[50%] max-md:ml-0 max-md:w-full"
+            >
+              <div className="flex flex-col items-start mt-2.5 max-md:mt-10 max-md:max-w-full">
+                <div className="flex gap-2.5 self-stretch text-6xl leading-[57.6px] text-sky-950 max-md:flex-wrap max-md:text-4xl px-[40px]">
+                  <div className="arrow">
+                    <span />
+                    <span />
+                    <span />
+                  </div>
+                  <div
+                    onMouseEnter={handleMouseEnter}
+                    data-value="Starters Trends"
+                    className="max-md:text-4xl font-rama w-full text-center"
+                  >
+                    Starters Trends
+                  </div>
+                </div>
+                <div className="mt-16 ml-5 max-md:mt-10 max-md:max-w-full space-y-3">
+                  {otherBlogs.map(blog => (
+                    <BlogCard {...blog} key={blog.id} />
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+        <motion.div
+          initial={{ y: 100, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.05, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+          className="container relative"
+        >
+          <div className="flex justify-center items-center py-6 mt-16 max-w-full text-6xl text-center leading-[108.8px] text-neutral-950 w-[788px] max-md:px-5 max-md:mt-10 max-md:text-4xl">
+            <div className="flex gap-4  max-md:text-4xl">
+              <div className="arrow">
+                <span />
+                <span />
+                <span />
+              </div>
+              <div
+                onMouseEnter={handleMouseEnter}
+                data-value="Events & Activities"
+                className="max-md:text-4xl text-center font-rama w-full pl-8"
+              >
+                Events & Activities
+              </div>
+            </div>
+          </div>
+          <div className="justify-center px-8 mt-4 w-full max-md:px-5 max-md:max-w-full">
+            <div className="flex gap-5 max-md:flex-col max-md:gap-0">
+              <div className="flex flex-col w-[33%] max-md:ml-0 max-md:w-full">
+                <Image
+                  src="/events2.png"
+                  alt="event"
+                  width={434}
+                  height={430}
+                  className="w-full aspect-square  max-md:max-w-full rounded-2xl"
+                />
+              </div>
+              <div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
+                <Image
+                  src="/events2.png"
+                  alt="event"
+                  width={434}
+                  height={430}
+                  className="w-full aspect-square  max-md:max-w-full rounded-2xl"
+                />
+              </div>
+              <div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
+                <Image
+                  src="/events2.png"
+                  alt="event"
+                  width={434}
+                  height={430}
+                  className="w-full aspect-square  max-md:max-w-full rounded-2xl"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="w-full items-center justify-center flex">
+            <button className="justify-center capitalize font-nunito items-center self-center px-3 py-1 mt-16 max-w-full text-lg font-semibold leading-5 text-center text-white bg-orange-400 rounded w-[522px] max-md:px-5 max-md:mt-10">
+              view all
+            </button>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+const blogdetails = [
+  {
+    id: 1,
+    writer: 'divine favour',
+    title: 'Importance of user fedback In UI/UX design',
+    date: new Date()
+  },
+  {
+    id: 2,
+    writer: 'Ojuolaipe Adekan',
+    title: '7 must have skills for a designer',
+    date: new Date()
+  },
+  {
+    id: 3,
+    writer: 'Ojuolaipe Adekan',
+    title: '7 must have skills for a designer',
+    date: new Date()
+  },
+  {
+    id: 4,
+    writer: 'Ojuolaipe Adekan',
+    title: '7 must have skills for a designer',
+    date: new Date()
+  }
+];
+
+const BlogCard = ({
+  id,
+  writer,
+  title,
+  date
+}: {
+  writer: string;
+  title: string;
+  date: Date;
+  id: number;
+}) => {
+  const CardRef = React.useRef<HTMLDivElement>(null);
+  const isInView = useInView({ ref: CardRef, once: false });
+  return (
+    <div
+      ref={CardRef}
+      style={{
+        transform: isInView ? 'none' : 'translateY(100px)',
+        opacity: isInView ? 1 : 0,
+        transition: 'transform 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s'
+      }}
+      className="w-full max-w-[485px] max-h-[180px]"
+    >
+      <div className="flex gap-5 max-md:flex-col max-md:gap-0">
+        <div className="flex">
+          <div className="flex flex-col">
+            <Image
+              src={`/blog/blog${id}.png`}
+              alt={title}
+              width={242}
+              height={180}
+              className="max-w-[242px] max-h-[180px] rounded-xl self-start w-full h-full object-cover"
+            />
+          </div>
+
+          <div className="flex flex-col ml-5 w-6/12 max-md:ml-0 max-md:w-full">
+            <div className="flex flex-col self-stretch px-5 my-auto text-lg font-medium max-md:mt-5">
+              <div className="tracking-normal leading-7 text-neutral-950">
+                {title}
+              </div>
+              <div className="mt-4 text-base tracking-normal leading-6 text-sky-950">
+                <span className="text-sky-950">By </span>
+                <span className=" text-sky-950 font-nunito"> {writer}</span>
+              </div>
+              <div className="mt36 font-medium text-orange-400 text-base">
+                Read More
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const MemberSection = () => {
+  return (
+    <section
+      className="flex flex-col pb-20 text-center text-white relative"
+      style={{ backgroundImage: 'url(/members.png)' }}
+    >
+      <div className="container">
+        <div className="flex flex-col justify-center items-center p-20">
+          <div className="flex flex-col w-full items-center max-w-[658px] justify-center">
+            <span className="text-base font-worksans text-[#FEA153]">
+              Those that make things happen in starters house{' '}
+            </span>
+            <div className="flex w-full">
+              <div className="arrow">
+                <span />
+                <span />
+                <span />
+              </div>
+              <div className="mt-7 text-6xl text-center leading-[57.6px] text-sky-950 max-md:max-w-full max-md:text-4xl w-full font-rama">
+                Starters Talents
+              </div>
+            </div>
+          </div>
+          <Carousel className="w-full my-12">
+            <CarouselContent className="">
+              {members.map(member => (
+                <CarouselItem
+                  key={member.id}
+                  className=" md:basis-1/2 lg:basis-1/3"
+                >
+                  <MembersCard {...member} key={member.id} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const MembersCard = ({
+  image,
+  fullName,
+  bio,
+  stack,
+  id
+}: {
+  image: string;
+  fullName: string;
+  bio: string;
+  stack: string;
+  id: number;
+}) => {
+  return (
+    <div className="max-w-sm bg-[#0A58CA] shadow-xl rounded-lg">
+      <div className="rounded-t-lg h-32 overflow-hidden">
+        <Image
+          className="object-cover object-top w-full"
+          src="/background.png"
+          alt="Mountain"
+          width={2600}
+          height={1046}
+          loading="eager"
+        />
+      </div>
+      <div className="mx-auto w-[186px] h-[186px] relative -mt-10 border border-nav-text-active rounded-full overflow-hidden">
+        <Image
+          src={`/profile/${image}.png`}
+          alt={fullName}
+          className="object-cover object-center h-[186px]"
+          width={186}
+          height={186}
+        />
+      </div>
+      <div className="px-4 text-center">
+        <div className="text-center mt-2">
+          <h2 className="font-semibold font-worksans text-xl text-nav-text-active capitalize">
+            {fullName}
+          </h2>
+          <p className="font-podkova text-nav-text text-sm capitalize">
+            {stack}
+          </p>
+        </div>
+        <p className="text-base font-nunito">
+          {shrinkString({ str: bio, len: 150 })}
+        </p>
+      </div>
+      <div className="p-4 mx-8 mt-2">
+        <Link
+          href={`/profile/details?id=${id}&name=${encryptString(fullName)}`}
+          className="w-full text-nav-text-active text-center"
+        >
+          View Profile
+        </Link>
+      </div>
+    </div>
+  );
+};
+export {
+  HeroSection,
+  AtGlance,
+  PillarSection,
+  FaqSection,
+  Trends,
+  MemberSection
+};
