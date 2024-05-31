@@ -7,7 +7,7 @@ import {
   Trends,
   MemberSection
 } from './modules';
-import { MyComponent } from './modules/rough';
+// import { MyComponent } from './modules/rough';
 
 const page = () => {
   return (
