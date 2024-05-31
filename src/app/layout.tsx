@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import '../styles/globals.scss';
 import StateContextProvider from '@/context/StateCtx';
 import { nunito, workSans, poppins, rama, jaka, podkova } from '@/font';
+import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASEURL as string),
@@ -67,6 +68,7 @@ export default function RootLayout({
           className={`${nunito.variable} ${workSans.variable} ${poppins.variable} ${rama.variable} ${jaka.className} ${podkova.variable} `}
         >
           {children}
+          <Toaster />
         </body>
       </StateContextProvider>
     </html>

@@ -8,6 +8,7 @@ import {
   MemberSection
 } from './modules';
 // import { MyComponent } from './modules/rough';
+import Rough from './modules/rough';
 
 const page = () => {
   return (
@@ -19,6 +20,7 @@ const page = () => {
       <Trends />
       <MemberSection />
       {/* <MyComponent /> */}
+      <Rough />
     </>
   );
 };

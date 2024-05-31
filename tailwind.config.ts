@@ -13,6 +13,9 @@ const config = {
       },
     },
     extend: {
+       screens: {
+        'custom': '1100px', 
+      },
       colors: {
         navbar: "#063172",
         "nav-text": "#DBE9FF",
