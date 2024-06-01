@@ -22,6 +22,7 @@ import {
   CarouselNext,
   CarouselPrevious
 } from '@/components/ui/carousel';
+import { InfiniteMovingCards } from './scrolllingimagess';
 
 const HeroSection = () => {
   return (
@@ -145,7 +146,7 @@ const PillarSection = () => {
       transition={{ delay: 0.05, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
       className="flex flex-col justify-center items-center bg-sky-50 my-[20px]"
     >
-      <div className="container pb-20">
+      <div className="custom:container px-[10px] pb-20">
         <div className="flex flex-col justify-center items-center p-20">
           <div className="flex w-full items-center max-w-[658px] justify-center">
             <div className="arrow">
@@ -157,11 +158,16 @@ const PillarSection = () => {
               Our Pillars of Strenght
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-12 gap-y-[70px]">
+          <div className="custom:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 6 my-12 gap-y-[70px] w-full hidden ">
             {pillars.map(pillar => (
               <PillarCard {...pillar} key={pillar.id} />
             ))}
           </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 6 my-12 gap-y-[70px] w-full custom:hidden">
+          {pillars.map(pillar => (
+            <PillarCard {...pillar} key={pillar.id} />
+          ))}
         </div>
         <div className="mt-[20px] text-2xl font-medium leading-10 text-center text-neutral-950 max-md:mt-10 max-md:max-w-full">
           **Together, Let&apos;s Start Something Amazing!**
@@ -229,9 +235,9 @@ const PillarCard = ({
         opacity: isInView ? 1 : 0,
         transition: 'transform 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s'
       }}
-      className="pillar-card min-w-[360px] min-h-[413px]"
+      className="pillar-card min-w-[320px] min-h-[413px] max-w-[320px]"
     >
-      <div className="pillar-card2 flex flex-col items-center justify-center min-w-[360px] min-h-[413px]">
+      <div className="pillar-card2 flex flex-col items-center justify-center min-w-[320px] min-h-[413px]">
         <Image src={image} alt={title} width={112} height={102} />
         <div className="mt-5 text-2xl font-medium text-center text-sky-950 font-worksans">
           {title}
@@ -631,6 +637,18 @@ const MemberSection = () => {
           </Carousel>
         </div>
       </div>
+      <InfiniteMovingCards
+        items={membersImage}
+        direction="right"
+        speed="normal"
+        pauseOnHover={false}
+      />
+      {/* <Link href="/members" className=''>view all</Link> */}
+      <div className="w-full items-center justify-center flex">
+        <button className="justify-center capitalize font-nunito items-center self-center px-3 py-1 mt-16 max-w-full text-lg font-semibold leading-5 text-center text-white bg-orange-400 rounded w-[522px] max-md:px-5 max-md:mt-10">
+          view all
+        </button>
+      </div>
     </section>
   );
 };
@@ -648,8 +666,18 @@ const MembersCard = ({
   stack: string;
   id: number;
 }) => {
+  const CardRef = React.useRef<HTMLDivElement>(null);
+  const isInView = useInView({ ref: CardRef, once: false });
   return (
-    <div className="max-w-sm bg-[#0A58CA] shadow-xl rounded-lg">
+    <div
+      ref={CardRef}
+      style={{
+        transform: isInView ? 'none' : 'translateY(100px)',
+        opacity: isInView ? 1 : 0,
+        transition: 'transform 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s'
+      }}
+      className="max-w-sm bg-[#0A58CA] shadow-xl rounded-lg"
+    >
       <div className="rounded-t-lg h-32 overflow-hidden">
         <Image
           className="object-cover object-top w-full"
@@ -684,7 +712,7 @@ const MembersCard = ({
       </div>
       <div className="p-4 mx-8 mt-2">
         <Link
-          href={`/profile/details?id=${id}&name=${encryptString(fullName)}`}
+          href={`/members/profile/details?id=${id}&name=${encryptString(fullName)}`}
           className="w-full text-nav-text-active text-center"
         >
           View Profile
@@ -693,6 +721,19 @@ const MembersCard = ({
     </div>
   );
 };
+
+export const membersImage = [
+  { id: 1, image: '/member1.png' },
+  { id: 2, image: '/member2.png' },
+  { id: 3, image: '/member1.png' },
+  { id: 4, image: '/member2.png' },
+  { id: 5, image: '/member2.png' },
+  { id: 6, image: '/member1.png' },
+  { id: 7, image: '/member2.png' },
+  { id: 8, image: '/member1.png' },
+  { id: 9, image: '/member2.png' },
+  { id: 10, image: '/member2.png' }
+];
 export {
   HeroSection,
   AtGlance,
