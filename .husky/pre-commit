@@ -15,7 +15,7 @@ npm run check-format ||
     echo '✨ Formatting complete and changes added. Committing with the previous commit message...';
     git commit --amend --no-edit;
     echo '✅✅ Amended commit with the new changes. Please try to push again.';
-    exit 1;  
+
 )
 
 

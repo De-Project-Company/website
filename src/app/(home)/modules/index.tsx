@@ -652,7 +652,7 @@ const MemberSection = () => {
   );
 };
 
-const MembersCard = ({
+export const MembersCard = ({
   image,
   fullName,
   bio,
@@ -675,7 +675,7 @@ const MembersCard = ({
         opacity: isInView ? 1 : 0,
         transition: 'transform 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s'
       }}
-      className="max-w-sm bg-[#0A58CA] shadow-xl rounded-lg"
+      className="max-w-sm bg-[#0A58CA] text-white shadow-xl rounded-lg"
     >
       <div className="rounded-t-lg h-32 overflow-hidden">
         <Image
@@ -712,7 +712,7 @@ const MembersCard = ({
       <div className="p-4 mx-8 mt-2">
         <Link
           href={`/members/profile/details?id=${id}&name=${encryptString(fullName)}`}
-          className="w-full text-nav-text-active text-center"
+          className="w-full text-nav-text-active mx-auto block text-center"
         >
           View Profile
         </Link>

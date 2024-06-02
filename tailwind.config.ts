@@ -24,6 +24,12 @@ const config = {
       borderRadius: {
         '1/2': '50%',
       },
+      borderWidth: {
+        1: '1px'
+      },
+      zIndex: {
+        1: '1'
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
