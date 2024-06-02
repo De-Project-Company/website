@@ -1,20 +1,14 @@
 'use client';
 
-import React, { ReactNode, useEffect, useState } from 'react';
-import {
-  FiArrowRight,
-  FiBarChart2,
-  FiChevronDown,
-  FiHome,
-  FiPieChart
-} from 'react-icons/fi';
-import { AnimatePresence, motion } from 'framer-motion';
-import { cn } from '@/utils';
-import useWindowHeight from '@/hooks/useDimension';
 import useMediaQuery from '@/hooks/use-media-query';
+import useWindowHeight from '@/hooks/useDimension';
+import { cn } from '@/utils';
+import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+import { ReactNode, useEffect, useState } from 'react';
+import { FiChevronDown } from 'react-icons/fi';
 import { AboutUs, Events, Formus } from './NavContent';
-import { usePathname, useSearchParams } from 'next/navigation';
 
 const Tab = ({
   children,

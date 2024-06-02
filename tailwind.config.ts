@@ -21,6 +21,9 @@ const config = {
         "nav-text": "#DBE9FF",
         "nav-text-active": "#FD9137",
       },
+      borderRadius: {
+        '1/2': '50%',
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },

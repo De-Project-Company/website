@@ -1,5 +1,5 @@
 const letters = '!ABCDEFGHIJKLMNOPQRSTUVWXYZ#';
-let interval: NodeJS.Timeout | null = null;
+// let interval: NodeJS.Timeout | null = null;
 
 // Uncomment this to use Interval instead of AnimationFrame
 
@@ -31,6 +31,7 @@ let interval: NodeJS.Timeout | null = null;
 // 	}, speed);
 // };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const handleMouseEnter = (el: any) => {
   if (!el) return;
   el = el.target;

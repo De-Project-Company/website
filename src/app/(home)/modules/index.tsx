@@ -1,20 +1,11 @@
 'use client';
 
-import React from 'react';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { cn, shrinkString, calculateReadingTime, encryptString } from '@/utils';
-import { ArrowRight2 } from 'iconsax-react';
-import Link from 'next/link';
-import { handleMouseEnter } from '@/utils/text-effect';
-import useInView from '@/hooks/useInView';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger
 } from '@/components/ui/accordion';
-import { members } from '@/constants';
 import {
   Carousel,
   CarouselContent,
@@ -22,6 +13,15 @@ import {
   CarouselNext,
   CarouselPrevious
 } from '@/components/ui/carousel';
+import { members } from '@/constants';
+import useInView from '@/hooks/useInView';
+import { cn, encryptString, shrinkString } from '@/utils';
+import { handleMouseEnter } from '@/utils/text-effect';
+import { motion } from 'framer-motion';
+import { ArrowRight2 } from 'iconsax-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
 import { InfiniteMovingCards } from './scrolllingimagess';
 
 const HeroSection = () => {
@@ -546,8 +546,7 @@ const blogdetails = [
 const BlogCard = ({
   id,
   writer,
-  title,
-  date
+  title
 }: {
   writer: string;
   title: string;
@@ -735,10 +734,10 @@ export const membersImage = [
   { id: 10, image: '/member2.png' }
 ];
 export {
-  HeroSection,
   AtGlance,
-  PillarSection,
   FaqSection,
-  Trends,
-  MemberSection
+  HeroSection,
+  MemberSection,
+  PillarSection,
+  Trends
 };

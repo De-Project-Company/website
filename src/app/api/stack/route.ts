@@ -8,6 +8,7 @@ export async function GET() {
       status: 200,
       stacks
     });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     return NextResponse.json({
       status: 500,
@@ -28,6 +29,7 @@ export async function POST(request: Request) {
       status: 201,
       newlang
     });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     return NextResponse.json({
       status: 500,
