@@ -2,11 +2,11 @@
 
 import React, { ReactNode, useEffect, useState } from 'react';
 import {
-  FiArrowRight,
-  FiBarChart2,
-  FiChevronDown,
-  FiHome,
-  FiPieChart
+  // FiArrowRight,
+  // FiBarChart2,
+  FiChevronDown
+  // FiHome,
+  // FiPieChart
 } from 'react-icons/fi';
 import { AnimatePresence, motion } from 'framer-motion';
 import { cn } from '@/utils';
