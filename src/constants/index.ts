@@ -43,4 +43,34 @@ const members = [
   }
 ];
 
+
+/**
+ * -- Resources
+ * image,
+ * title,
+ * fileType,
+ * authorName,
+ * authorProfileImage
+ * hearMedium
+ * */
+
+const resources =  [
+  {
+    id: 1,
+    image: ' ',
+    title: 'Whether you\'re a professional or just E-Book',
+    fileType: 'E-Book',
+    authorName: 'Olatunji Ibrahim',
+    hearMedium: 'View'
+  },
+
+  {
+    id:2,
+    image: ' ',
+    title: 'Whether you\'re a professional or just E-Book',
+    fileType: 'pdf',
+    authorName: 'Babangida Ibrahim',
+    hearMedium: 'view'
+  }
+]
 export { members };
