@@ -6,7 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "check-types": "tsc --pretty --noEmit",
+    "check-format": "prettier --check .",
+    "check-lint": "eslint . --ext ts --ext tsx --ext js",
+    "postinstall": "husky install",
+    "prepare": "husky",
+    "format": "npm run check-lint --fix && npx prettier --write ."
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.1.2",
@@ -45,7 +51,6 @@
     "typescript": "^5"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "eslint --fix --cache",
-    "*.{js,jsx,ts,tsx,css, scss,md,html,json}": "prettier --write"
+    "*.{js,jsx,ts,tsx}": "eslint --fix --cache"
   }
 }
