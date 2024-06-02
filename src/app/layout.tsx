@@ -3,6 +3,7 @@ import '../styles/globals.scss';
 import StateContextProvider from '@/context/StateCtx';
 import { nunito, workSans, poppins, rama, jaka, podkova } from '@/font';
 import { Toaster } from '@/components/ui/toaster';
+import MemberContextProvider from '@/context/MemberCtx';
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_BASEURL as string),
@@ -64,12 +65,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <StateContextProvider>
-        <body
-          className={`${nunito.variable} ${workSans.variable} ${poppins.variable} ${rama.variable} ${jaka.className} ${podkova.variable} `}
-        >
-          {children}
-          <Toaster />
-        </body>
+        <MemberContextProvider>
+          <body
+            className={`${nunito.variable} ${workSans.variable} ${poppins.variable} ${rama.variable} ${jaka.className} ${podkova.variable} `}
+          >
+            {children}
+            <Toaster />
+          </body>
+        </MemberContextProvider>
       </StateContextProvider>
     </html>
   );
