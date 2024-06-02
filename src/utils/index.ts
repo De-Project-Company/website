@@ -42,16 +42,18 @@ export function reformatDate(dateStr: string) {
   return date.toLocaleDateString('en-US', options);
 }
 
-export function calculateReadingTime(mdxContent: any) {
-  const wordsPerMinute = 200;
-  const text = mdxContent.replace(/<\/?[^>]+(>|$)/g, '');
-  const wordCount = text
-    .split(/\s+/)
-    .filter((word: any) => word.length > 0).length;
-  const readingTime = Math.ceil(wordCount / wordsPerMinute);
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+// export function calculateReadingTime(mdxContent: any) {
+//   const wordsPerMinute = 200;
+//   const text = mdxContent.replace(/<\/?[^>]+(>|$)/g, '');
+//   const wordCount = text
+//     .split(/\s+/)
+//     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+//     .filter((word: any) => word.length > 0).length;
+//   const readingTime = Math.ceil(wordCount / wordsPerMinute);
 
-  return readingTime;
-}
+//   return readingTime;
+// }
 
 /**
  * Returns an Encrypted a string .
