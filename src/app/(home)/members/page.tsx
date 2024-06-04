@@ -1,12 +1,11 @@
-import MemberCard from '@/components/membar-card';
+import MembersPage from '@/components/member-page-component';
 
-const MembersPage = () => {
+const page = () => {
   return (
-    <div>
-      <h1>Members Page</h1>
-      <MemberCard name={''} image={''} stack={''} role={''} />
+    <div className="">
+      <MembersPage />
     </div>
   );
 };
 
-export default MembersPage;
+export default page;
