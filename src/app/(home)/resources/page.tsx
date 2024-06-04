@@ -1,5 +1,4 @@
 'use client';
-
 import {
   Card,
   CardContent,
@@ -11,18 +10,14 @@ import {
 import { resources } from '@/constants';
 import { cn } from '@/utils';
 import Image from 'next/image';
+import Jumbotron from '@/components/ui/jumbotron';
 
 const ResourcesPage = () => {
   return (
     <>
-      {/*  header*/}
-      <header
-        className="bg-red-300 bg-[url('/resources/resources_page.png')]
-      bg-no-repeat h-[343px] relative"
-      >
-        <div className="absolute inset-0 bg-[#052759] opacity-60"></div>
-      </header>
+      {/*jumbotron*/}
 
+      <Jumbotron className="bg-[url('/resources/resources_page.png')]" />
       {/*  content*/}
       <div className="px-4 md:px-0 md:w-[70%] mx-auto mt-8 mb-12">
         {resources.map(data => (

@@ -56,20 +56,23 @@ const members = [
 const resources = [
   {
     id: 1,
-    image: ' ',
+    image: '/resources/author1.png',
     title: "Whether you're a professional or just E-Book",
     fileType: 'E-Book',
     authorName: 'Olatunji Ibrahim',
-    hearMedium: 'View'
+    authorProfileImage: '/resources/author1image.jpeg',
+    hearMedium: 'listenNow'
   },
 
   {
     id: 2,
-    image: ' ',
+    image: '/resources/author2.png',
     title: "Whether you're a professional or just E-Book",
     fileType: 'pdf',
     authorName: 'Abangada Ibrahim',
+    authorProfileImage: '/resources/author2image.jpeg',
     hearMedium: 'view'
   }
 ];
-export { members };
+
+export { members, resources };
