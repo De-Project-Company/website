@@ -9,6 +9,7 @@ import { useSearchParams } from 'next/navigation';
 import { ReactNode, useEffect, useState } from 'react';
 import { FiChevronDown } from 'react-icons/fi';
 import { AboutUs, Events, Formus } from './NavContent';
+import { Button } from '../ui/button';
 
 const Tab = ({
   children,
@@ -239,9 +240,14 @@ const NavigationBar = () => {
             Resources
           </Link>
         </div>
-        <button className="w-[152px] h-[56px] bg-nav-text-active text-nav-text rounded-md hidden lg:block text-center">
-          Get Started
-        </button>
+        <Button
+          asChild
+          className="w-[152px] h-[56px] bg-nav-text-active text-nav-text hover:bg-nav-text-active hover:text-nav-text rounded-md hidden lg:block text-center"
+        >
+          <Link href="/register" className="text-center flex h-[56px] py-4">
+            Get Started
+          </Link>
+        </Button>
         <AnimatePresence>
           {selected && <Content dir={dir} selected={selected} />}
         </AnimatePresence>
