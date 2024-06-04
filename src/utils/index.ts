@@ -77,3 +77,17 @@ export const decryptString = (str?: string): string => {
   const buffer = Buffer.from(str, 'base64');
   return buffer.toString();
 };
+
+export const Baseurl = process.env.NEXT_PUBLIC_BACKEND_URL;
+
+export function maskEmail(email?: string) {
+  if (!email) {
+    return '';
+  }
+  const [localPart, domain] = email.split('@');
+  if (localPart.length <= 2) {
+    return `${localPart}***@${domain}`;
+  }
+  const maskedLocalPart = `${localPart.slice(0, 2)}***`;
+  return `${maskedLocalPart}@${domain}`;
+}
