@@ -38,7 +38,7 @@ export const MemberContext = createContext<MemberCreationProps | undefined>(
 const MemberContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [memberregistrationData, setmemberregistrationData] =
     useState<MemberCreationsProps>(defaultMemberData);
-  const [currentPage, setCurrentPage] = useState<number>(4);
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   const value = useMemo(
     () => ({
