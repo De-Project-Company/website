@@ -1,16 +1,13 @@
 import React from 'react';
-
-import Jumbotron from '@/components/ui/jumbotron';
-import { cn } from '@/utils';
-
+import MembersPage from '@/components/member-page-component';
 // TODO: You can start working on the members page from here
 
-const MembersPage: React.FC = () => {
+const page = () => {
   return (
-    <div>
-      <p> Members page</p>
+    <div className="">
+      <MembersPage />
     </div>
   );
 };
 
-export default MembersPage;
+export default page;

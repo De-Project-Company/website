@@ -1,20 +1,11 @@
 'use client';
 
-import React from 'react';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { cn, shrinkString, calculateReadingTime, encryptString } from '@/utils';
-import { ArrowRight2 } from 'iconsax-react';
-import Link from 'next/link';
-import { handleMouseEnter } from '@/utils/text-effect';
-import useInView from '@/hooks/useInView';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger
 } from '@/components/ui/accordion';
-import { members } from '@/constants';
 import {
   Carousel,
   CarouselContent,
@@ -22,6 +13,15 @@ import {
   CarouselNext,
   CarouselPrevious
 } from '@/components/ui/carousel';
+import { members } from '@/constants';
+import useInView from '@/hooks/useInView';
+import { cn, encryptString, shrinkString } from '@/utils';
+import { handleMouseEnter } from '@/utils/text-effect';
+import { motion } from 'framer-motion';
+import { ArrowRight2 } from 'iconsax-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
 import { InfiniteMovingCards } from './scrolllingimagess';
 
 const HeroSection = () => {
@@ -546,8 +546,7 @@ const blogdetails = [
 const BlogCard = ({
   id,
   writer,
-  title,
-  date
+  title
 }: {
   writer: string;
   title: string;
@@ -653,7 +652,7 @@ const MemberSection = () => {
   );
 };
 
-const MembersCard = ({
+export const MembersCard = ({
   image,
   fullName,
   bio,
@@ -676,7 +675,7 @@ const MembersCard = ({
         opacity: isInView ? 1 : 0,
         transition: 'transform 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s'
       }}
-      className="max-w-sm bg-[#0A58CA] shadow-xl rounded-lg"
+      className="max-w-sm bg-[#0A58CA] text-white shadow-xl rounded-lg"
     >
       <div className="rounded-t-lg h-32 overflow-hidden">
         <Image
@@ -713,7 +712,7 @@ const MembersCard = ({
       <div className="p-4 mx-8 mt-2">
         <Link
           href={`/members/profile/details?id=${id}&name=${encryptString(fullName)}`}
-          className="w-full text-nav-text-active text-center"
+          className="w-full text-nav-text-active mx-auto block text-center"
         >
           View Profile
         </Link>
@@ -735,10 +734,10 @@ export const membersImage = [
   { id: 10, image: '/member2.png' }
 ];
 export {
-  HeroSection,
   AtGlance,
-  PillarSection,
   FaqSection,
-  Trends,
-  MemberSection
+  HeroSection,
+  MemberSection,
+  PillarSection,
+  Trends
 };

@@ -14,13 +14,13 @@ const StateContextProvider = ({ children }: { children: React.ReactNode }) => {
 
   //   const isAnyModalOpen =
 
-  const anyMobileSidebarOpen = showMobileMenu;
+  // const anyMobileSidebarOpen = showMobileMenu;
 
-  const isMobileDevice = () => {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator?.userAgent
-    );
-  };
+  // const isMobileDevice = () => {
+  //   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+  //     navigator?.userAgent
+  //   );
+  // };
 
   useEffect(() => {
     if (showMobileMenu) {

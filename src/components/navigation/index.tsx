@@ -1,20 +1,15 @@
 'use client';
 
-import React, { ReactNode, useEffect, useState } from 'react';
-import {
-  // FiArrowRight,
-  // FiBarChart2,
-  FiChevronDown
-  // FiHome,
-  // FiPieChart
-} from 'react-icons/fi';
-import { AnimatePresence, motion } from 'framer-motion';
-import { cn } from '@/utils';
 import useWindowHeight from '@/hooks/useDimension';
 import useMediaQuery from '@/hooks/use-media-query';
+import { cn } from '@/utils';
+import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+import { ReactNode, useEffect, useState } from 'react';
+import { FiChevronDown } from 'react-icons/fi';
 import { AboutUs, Events, Formus } from './NavContent';
-import { usePathname, useSearchParams } from 'next/navigation';
+import { Button } from '../ui/button';
 
 const Tab = ({
   children,
@@ -245,9 +240,14 @@ const NavigationBar = () => {
             Resources
           </Link>
         </div>
-        <button className="w-[152px] h-[56px] bg-nav-text-active text-nav-text rounded-md hidden lg:block text-center">
-          Get Started
-        </button>
+        <Button
+          asChild
+          className="w-[152px] h-[56px] bg-nav-text-active text-nav-text hover:bg-nav-text-active hover:text-nav-text rounded-md hidden lg:block text-center"
+        >
+          <Link href="/register" className="text-center flex h-[56px] py-4">
+            Get Started
+          </Link>
+        </Button>
         <AnimatePresence>
           {selected && <Content dir={dir} selected={selected} />}
         </AnimatePresence>
