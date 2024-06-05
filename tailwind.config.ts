@@ -83,6 +83,7 @@ const config = {
         rama: [`var(--font-ramaraja)`, "sans-serif"],
         jaka: [`var(--font-jakarta)`, "sans-serif"],
         podkova: [`var(--font-podkova)`, "sans-serif"],
+        cav: [`var(--font-caveat)`, "sans-serif"],
       },
     },
   },
