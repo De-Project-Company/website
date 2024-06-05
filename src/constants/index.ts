@@ -1,3 +1,8 @@
+import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import { AiOutlineMail } from 'react-icons/ai';
+import { FaSquareXTwitter } from 'react-icons/fa6';
+import { NavLink, SocialLink } from '@/types';
+
 const members = [
   {
     id: 1,
@@ -43,4 +48,50 @@ const members = [
   }
 ];
 
-export { members };
+const NAV_LINKS: NavLink[] = [
+  {
+    label: 'about us',
+    link: 'about-us'
+  },
+  {
+    label: 'forum',
+    link: 'forum'
+  },
+  {
+    label: 'events',
+    link: 'events'
+  },
+  {
+    label: 'resources',
+    link: 'resources'
+  },
+  {
+    label: 'get started',
+    link: 'get-started'
+  }
+];
+
+const SOCIAL_LINKS: SocialLink[] = [
+  {
+    name: 'Mail',
+    link: 'mailto:hello@startershouse.com',
+    icon: AiOutlineMail
+  },
+  {
+    name: 'Twitter',
+    link: 'https://x.com/StartersHouse',
+    icon: FaSquareXTwitter
+  },
+  {
+    name: 'Github',
+    link: 'https://github.com/De-Project-Company',
+    icon: FaGithub
+  },
+  {
+    name: 'LinkedIn',
+    link: 'https://www.linkedin.com',
+    icon: FaLinkedin
+  }
+];
+
+export { members, NAV_LINKS, SOCIAL_LINKS };

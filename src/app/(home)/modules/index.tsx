@@ -17,7 +17,7 @@ import { Member } from '@/types';
 import useInView from '@/hooks/useInView';
 import { cn, encryptString, shrinkString } from '@/utils';
 import { handleMouseEnter } from '@/utils/text-effect';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight2 } from 'iconsax-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -25,6 +25,8 @@ import React from 'react';
 import { InfiniteMovingCards } from './scrolllingimagess';
 import { useState, useEffect } from 'react';
 import { getallmembers } from '@/action';
+import { SpotlightButton } from '@/components/SpotlightButton';
+import { GoogleGeminiEffect } from '@/components/miscellaneous';
 
 const HeroSection = () => {
   return (
@@ -333,9 +335,13 @@ const FaqSection = () => {
                   </AccordionItem>
                 ))}
               </Accordion>
-              <button className="justify-center items-center px-3 py-3 mt-14 text-lg font-semibold leading-5 text-center text-white bg-orange-400 rounded font-poppins">
-                Join Startres House
-              </button>
+
+              <Link href="/get-started" className="w-full">
+                <SpotlightButton
+                  title="Join Starter House"
+                  className="mt-14 w-full font-poppins"
+                />
+              </Link>
             </div>
           </motion.div>
         </div>
@@ -507,12 +513,18 @@ const Trends = () => {
               </div>
             </div>
           </div>
-          <div className="w-full items-center justify-center flex">
-            <button className="justify-center capitalize font-nunito items-center self-center px-3 py-1 mt-16 max-w-full text-lg font-semibold leading-5 text-center text-white bg-orange-400 rounded w-[522px] max-md:px-5 max-md:mt-10">
-              view all
-            </button>
-          </div>
         </motion.div>
+        <div className="w-full items-center justify-center flex">
+          <Link
+            href="/members"
+            className="w-full items-center justify-center flex"
+          >
+            <SpotlightButton
+              title="View All"
+              className="mt-14 w-[522px] font-poppins"
+            />
+          </Link>
+        </div>
       </div>
     </section>
   );
@@ -655,11 +667,14 @@ const MemberSection = () => {
         speed="normal"
         pauseOnHover={false}
       />
-      {/* <Link href="/members" className=''>view all</Link> */}
+
       <div className="w-full items-center justify-center flex">
-        <button className="justify-center capitalize font-nunito items-center self-center px-3 py-1 mt-16 max-w-full text-lg font-semibold leading-5 text-center text-white bg-orange-400 rounded w-[522px] max-md:px-5 max-md:mt-10">
-          view all
-        </button>
+        <Link href="/members" className="w-full">
+          <SpotlightButton
+            title="View All"
+            className="mt-14 w-[522px] font-poppins"
+          />
+        </Link>
       </div>
     </section>
   );
@@ -746,11 +761,42 @@ export const membersImage = [
   { id: 9, image: '/member2.png' },
   { id: 10, image: '/member2.png' }
 ];
+
+const GimecEffect = () => {
+  const ref = React.useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start start', 'end start']
+  });
+
+  const pathLengthFirst = useTransform(scrollYProgress, [0, 0.8], [0.2, 1.2]);
+  const pathLengthSecond = useTransform(scrollYProgress, [0, 0.8], [0.15, 1.2]);
+  const pathLengthThird = useTransform(scrollYProgress, [0, 0.8], [0.1, 1.2]);
+  const pathLengthFourth = useTransform(scrollYProgress, [0, 0.8], [0.05, 1.2]);
+  const pathLengthFifth = useTransform(scrollYProgress, [0, 0.8], [0, 1.2]);
+
+  return (
+    <>
+      <div className="h-[400vh] w-full relative overflow-clip" ref={ref}>
+        <GoogleGeminiEffect
+          pathLengths={[
+            pathLengthFirst,
+            pathLengthSecond,
+            pathLengthThird,
+            pathLengthFourth,
+            pathLengthFifth
+          ]}
+        />
+      </div>
+    </>
+  );
+};
 export {
   AtGlance,
   FaqSection,
   HeroSection,
   MemberSection,
   PillarSection,
-  Trends
+  Trends,
+  GimecEffect
 };

@@ -53,4 +53,15 @@ interface Publication {
   owner: Member;
 }
 
-export { Social, Framework, Publication, Project, Member };
+interface NavLink {
+  label: string;
+  link: string;
+}
+
+interface SocialLink {
+  name: string;
+  link: string;
+  icon: Icon;
+}
+
+export { Social, Framework, Publication, Project, Member, NavLink, SocialLink };
