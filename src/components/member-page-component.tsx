@@ -1,28 +1,37 @@
 'use client';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons';
-
+import { cn } from '@/utils';
 import { MembersCard } from '@/app/(home)/modules';
-import { memberData } from '@/data/dummy-members-data';
-
-const memberStatus = ['Active', 'Past'];
+import { getallmembers } from '@/action';
+import { Member } from '@/types';
 
 const MembersPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [memberType, setMemberType] = useState(memberStatus[0]);
+  const [memberType, setMemberType] = useState<'Active' | 'Past'>('Active');
   const membersRef = useRef<HTMLDivElement>(null);
 
-  const handleFilter = (status: string) => {
+  const [members, setMembers] = useState<Member[]>([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await getallmembers();
+      setMembers(res.account);
+    };
+
+    fetchData();
+  }, []);
+
+  const handleFilter = (status: 'Active' | 'Past') => {
     setCurrentPage(1);
     setMemberType(status);
   };
 
-  const filteredMembers = memberData.filter(
-    ({ isActive }) =>
-      (memberType === 'Active' && isActive) ||
-      (memberType === 'Past' && !isActive)
-  );
+  const filteredMembers = members.filter(({ status }) => {
+    if (memberType === 'Active') return status.toLowerCase() === 'active';
+    if (memberType === 'Past') return status.toLowerCase() === 'past';
+    return false;
+  });
 
   const itemsPerPage = 9;
   const totalItems = filteredMembers.length;
@@ -89,32 +98,34 @@ const MembersPage = () => {
 
       <div className="container">
         <div className="flex gap-4 justify-between w-full max-w-[500px]">
-          {memberStatus.map((status, i) => (
-            <button
-              key={i}
-              onClick={() => handleFilter(status)}
-              className={`text-[#052759] font-bold text-[20px] md:text-[24px] border-b-[5px]  py-4 ${memberType === status ? 'border-[#0D6EFD]' : 'border-transparent'}`}
-            >
-              {status} Members
-            </button>
-          ))}
+          <button
+            onClick={() => handleFilter('Active')}
+            className={cn(
+              'text-[#052759] font-bold text-[20px] md:text-[24px] border-b-[5px]  py-4',
+              memberType === 'Active'
+                ? 'border-[#0D6EFD]'
+                : 'border-transparent'
+            )}
+          >
+            Active Members
+          </button>
+          <button
+            onClick={() => handleFilter('Past')}
+            className={cn(
+              'text-[#052759] font-bold text-[20px] md:text-[24px] border-b-[5px]  py-4',
+              memberType === 'Past' ? 'border-[#0D6EFD]' : 'border-transparent'
+            )}
+          >
+            Past Members
+          </button>
         </div>
 
         <div
-          className="flex flex-wrap justify-center lg:justify-start pt-10 gap-6"
+          className="flex flex-wrap justify-center w-full items-center pt-10 gap-6"
           ref={membersRef}
         >
-          {displayedMembers.map((data, index) => (
-            <MembersCard
-              key={data.id}
-              id={index}
-              fullName={data.name}
-              image={data.image}
-              stack={data.stack}
-              bio={
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Et quibusdam exercitationem accusamus labore modi eum numquam, repellat sapiente, iure impedit quis eos non molestiae enim aliquam possimus quo deleniti unde.'
-              }
-            />
+          {displayedMembers.map(data => (
+            <MembersCard key={data.id} {...data} />
           ))}
         </div>
 

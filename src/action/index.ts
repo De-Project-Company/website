@@ -63,4 +63,20 @@ const Otp = async (values: z.infer<typeof OtpSchema>, userId: string) => {
   }
 };
 
-export { CreateUser, Otp };
+const getallmembers = async () => {
+  try {
+    const res = await $Http.get('/api/v1/members/get-all-users');
+
+    return {
+      status: res.status,
+      account: res.data.members
+    };
+  } catch (e: any) {
+    return {
+      message: e?.response?.data.message,
+      status: e?.response?.status
+    };
+  }
+};
+
+export { CreateUser, Otp, getallmembers };
