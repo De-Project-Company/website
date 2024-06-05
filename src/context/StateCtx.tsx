@@ -5,16 +5,19 @@ import React, { createContext, useContext, useEffect, useMemo } from 'react';
 interface StateContextProps {
   showMobileMenu: boolean;
   setShowMobileMenu: React.Dispatch<React.SetStateAction<boolean>>;
+  ShowOtp: boolean;
+  setShowOtp: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const StateContext = createContext({} as StateContextProps);
 
 const StateContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
+  const [ShowOtp, setShowOtp] = React.useState(false);
 
-  //   const isAnyModalOpen =
+  const isAnyModalOpen = ShowOtp;
 
-  // const anyMobileSidebarOpen = showMobileMenu;
+  const anyMobileSidebarOpen = showMobileMenu;
 
   // const isMobileDevice = () => {
   //   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -23,7 +26,7 @@ const StateContextProvider = ({ children }: { children: React.ReactNode }) => {
   // };
 
   useEffect(() => {
-    if (showMobileMenu) {
+    if (anyMobileSidebarOpen || isAnyModalOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
@@ -32,6 +35,7 @@ const StateContextProvider = ({ children }: { children: React.ReactNode }) => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setShowMobileMenu(false);
+        setShowOtp(false);
       }
     };
 
@@ -40,14 +44,16 @@ const StateContextProvider = ({ children }: { children: React.ReactNode }) => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [showMobileMenu]);
+  }, [anyMobileSidebarOpen, isAnyModalOpen]);
 
   const value = useMemo(
     () => ({
       showMobileMenu,
-      setShowMobileMenu
+      setShowMobileMenu,
+      ShowOtp,
+      setShowOtp
     }),
-    [showMobileMenu, setShowMobileMenu]
+    [showMobileMenu, setShowMobileMenu, ShowOtp, setShowOtp]
   );
 
   return (

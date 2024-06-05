@@ -13,7 +13,7 @@ import {
   CarouselNext,
   CarouselPrevious
 } from '@/components/ui/carousel';
-import { members } from '@/constants';
+import { Member } from '@/types';
 import useInView from '@/hooks/useInView';
 import { cn, encryptString, shrinkString } from '@/utils';
 import { handleMouseEnter } from '@/utils/text-effect';
@@ -23,6 +23,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { InfiniteMovingCards } from './scrolllingimagess';
+import { useState, useEffect } from 'react';
+import { getallmembers } from '@/action';
 
 const HeroSection = () => {
   return (
@@ -598,6 +600,17 @@ const BlogCard = ({
 };
 
 const MemberSection = () => {
+  const [members, setMembers] = useState<Member[]>([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await getallmembers();
+      setMembers(res.account);
+    };
+
+    fetchData();
+
+    return () => {};
+  }, []);
   return (
     <section
       className="flex flex-col pb-20 text-center text-white relative"
@@ -656,15 +669,11 @@ export const MembersCard = ({
   image,
   fullName,
   bio,
-  stack,
-  id
-}: {
-  image: string;
-  fullName: string;
-  bio: string;
-  stack: string;
-  id: number;
-}) => {
+  department,
+  email,
+  id,
+  preferedName
+}: Member) => {
   const CardRef = React.useRef<HTMLDivElement>(null);
   const isInView = useInView({ ref: CardRef, once: false });
   return (
@@ -689,7 +698,11 @@ export const MembersCard = ({
       </div>
       <div className="mx-auto w-[186px] h-[186px] relative -mt-10 border border-nav-text-active rounded-full overflow-hidden">
         <Image
-          src={`/profile/${image}.png`}
+          src={
+            image
+              ? image
+              : `https://ui-avatars.com/api/?name=${email}&background=random`
+          }
           alt={fullName}
           className="object-cover object-center h-[186px]"
           width={186}
@@ -699,10 +712,10 @@ export const MembersCard = ({
       <div className="px-4 text-center">
         <div className="text-center mt-2">
           <h2 className="font-semibold font-worksans text-xl text-nav-text-active capitalize">
-            {fullName}
+            {preferedName ? preferedName : fullName}
           </h2>
           <p className="font-podkova text-nav-text text-sm capitalize">
-            {stack}
+            {department}
           </p>
         </div>
         <p className="text-base font-nunito">

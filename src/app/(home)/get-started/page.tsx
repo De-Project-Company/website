@@ -1,10 +1,11 @@
 import React from 'react';
-import { RegistrationNav } from './(components)';
+import { RegistrationNav, RegistrationFormOne } from './(components)';
 
 const page = () => {
   return (
     <>
       <RegistrationNav />
+      <RegistrationFormOne />
     </>
   );
 };

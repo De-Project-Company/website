@@ -56,9 +56,6 @@ const ResourcesPage = () => {
                 </p>
               </div>
             </CardContent>
-            {/*<CardFooter>*/}
-            {/*  <p>Card Footer</p>*/}
-            {/*</CardFooter>*/}
           </Card>
         ))}
       </div>
