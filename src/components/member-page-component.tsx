@@ -93,7 +93,7 @@ const MembersPage = () => {
             <button
               key={i}
               onClick={() => handleFilter(status)}
-              className={`text-[#052759] font-bold text-[20px] md:text-[24px] border-b-[5px]  py-4 ${memberType === status ? 'border-[#0D6EFD]' : 'border-transparent'}`}
+              className={`text-[#052759] font-bold text-[20px] md:text-[24px] border-b-[5px]  py-4 ${memberType === status ? 'border-[#0D6EFD]' : ''}`}
             >
               {status} Members
             </button>
