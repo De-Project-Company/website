@@ -4,7 +4,7 @@ interface Member {
   fullName: string;
   bio: string;
   image?: string;
-  status: string;
+  status: 'pending' | 'active' | 'past';
   address: string;
   createdAt: Date;
   portfolio?: string;
@@ -19,12 +19,22 @@ interface Member {
   otp?: string;
   otpExpires?: Date;
   verified: boolean;
-  framworks: Frameworks[];
-  socials: Socials[];
-  project: Project[];
-  publication: Publication[];
-  languages: Languages[];
-  stack: Stack[];
+  department?: string;
+  framworks?: Framework[];
+  socials?: Social[];
+  projects?: Project[];
+  publications?: Publication[];
+}
+
+interface Framework {
+  id: number;
+  framworks: string;
+}
+
+interface Social {
+  id: number;
+  platform: string;
+  url: string;
 }
 
 interface Project {
@@ -34,38 +44,13 @@ interface Project {
   description: string;
   opensource: boolean;
   githublink?: string;
-  membersId: string;
+  members: Member[];
 }
 
 interface Publication {
   id: string;
   type: string;
-  membersId: string;
+  owner: Member;
 }
 
-interface Stack {
-  id: number;
-  stack: string;
-  membersId: string;
-}
-
-interface Languages {
-  id: number;
-  language: string;
-  membersId: string;
-}
-
-interface Frameworks {
-  id: number;
-  framworks: string;
-  membersId?: string;
-}
-
-interface Socials {
-  id: number;
-  platform: string;
-  url: string;
-  membersId: string;
-}
-
-export { Socials, Frameworks, Languages, Stack, Publication, Project, Member };
+export { Social, Framework, Publication, Project, Member };
