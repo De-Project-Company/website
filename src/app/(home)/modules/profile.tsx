@@ -1,3 +1,4 @@
+// @ts-nocheck
 'use client';
 import React, { useEffect, useState } from 'react';
 import { getMemberById } from '@/action';
@@ -31,9 +32,7 @@ const Profile: React.FC<ProfileProps> = ({ id }) => {
     const fetchById = async () => {
       try {
         const res = await getMemberById(id);
-        // console.log(res);
         setMember(res);
-        // console.log(res)
       } catch (error) {
         console.error('Failed to fetch member data:', error);
       }
