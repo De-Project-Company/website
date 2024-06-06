@@ -24,23 +24,23 @@ interface MemberData {
 }
 
 const Profile: React.FC<ProfileProps> = ({ id }) => {
-  const [member, setMember] = useState<MemberData | undefined | null>(null);
+  const [member, setMember] = useState<MemberData | null>(null);
 
   // fetch the unique id
   useEffect(() => {
     const fetchById = async () => {
       try {
         const res = await getMemberById(id);
-        console.log(res);
-
+        // console.log(res);
         setMember(res);
+        // console.log(res)
       } catch (error) {
         console.error('Failed to fetch member data:', error);
       }
     };
 
     fetchById();
-  }, [id]);
+  }, []);
 
   return (
     <>

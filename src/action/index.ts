@@ -103,4 +103,21 @@ const getMemberById = async (id: string): Promise<Member | null> => {
     return null;
   }
 };
-export { CreateUser, Otp, getallmembers, getMemberById };
+
+const getAllProject = async () => {
+  try {
+    const res = await $Http.get('/api/v1/project');
+
+    return {
+      status: res.status,
+      projects: res.data.projects
+    };
+  } catch (e: any) {
+    return {
+      message: e?.response?.data.message,
+      status: e?.response?.status
+    };
+  }
+};
+
+export { CreateUser, Otp, getallmembers, getAllProject, getMemberById };

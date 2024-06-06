@@ -4,7 +4,8 @@ import {
   Work_Sans,
   Ramaraja,
   Plus_Jakarta_Sans,
-  Podkova
+  Podkova,
+  Caveat
 } from 'next/font/google';
 
 const nunito = Nunito({
@@ -45,4 +46,10 @@ const podkova = Podkova({
   variable: '--font-podkova'
 });
 
-export { nunito, workSans, poppins, rama, jaka, podkova };
+const cav = Caveat({
+  subsets: ['latin', 'cyrillic-ext', 'latin-ext', 'cyrillic'],
+  display: 'swap',
+  variable: '--font-caveat'
+});
+
+export { nunito, workSans, poppins, rama, jaka, podkova, cav };

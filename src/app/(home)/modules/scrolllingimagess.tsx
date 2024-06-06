@@ -12,8 +12,7 @@ export const InfiniteMovingCards = ({
   className
 }: {
   items: {
-    id: string | number;
-    image: string;
+    image?: string;
   }[];
   direction?: 'left' | 'right';
   speed?: 'fast' | 'normal' | 'slow';
@@ -70,6 +69,7 @@ export const InfiniteMovingCards = ({
       }
     }
   };
+
   return (
     <div
       ref={containerRef}
@@ -86,10 +86,10 @@ export const InfiniteMovingCards = ({
         {items.map(item => (
           <li
             className="max-w-[150px] h-[180px] w-full relative rounded-2xl overflow-hidden flex-shrink-0"
-            key={item.id}
+            key={item.image}
           >
             <Image
-              src={item.image}
+              src={item.image ? item.image : '/member2.png'}
               alt="scrooling image"
               width={150}
               height={180}

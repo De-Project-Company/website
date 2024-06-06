@@ -39,12 +39,11 @@ interface Social {
 
 interface Project {
   id: string;
-  livelink: string;
+  name: string;
   image: string;
   description: string;
-  opensource: boolean;
-  githublink?: string;
   members: Member[];
+  link: string;
 }
 
 interface Publication {
@@ -53,4 +52,15 @@ interface Publication {
   owner: Member;
 }
 
-export { Social, Framework, Publication, Project, Member };
+interface NavLink {
+  label: string;
+  link: string;
+}
+
+interface SocialLink {
+  name: string;
+  link: string;
+  icon: Icon;
+}
+
+export { Social, Framework, Publication, Project, Member, NavLink, SocialLink };
