@@ -13,7 +13,7 @@ import {
   CarouselNext,
   CarouselPrevious
 } from '@/components/ui/carousel';
-import { Member } from '@/types';
+import { Member, Project } from '@/types';
 import useInView from '@/hooks/useInView';
 import { cn, encryptString, shrinkString } from '@/utils';
 import { handleMouseEnter } from '@/utils/text-effect';
@@ -24,9 +24,10 @@ import Link from 'next/link';
 import React from 'react';
 import { InfiniteMovingCards } from './scrolllingimagess';
 import { useState, useEffect } from 'react';
-import { getallmembers } from '@/action';
+import { getallmembers, getAllProject } from '@/action';
 import { SpotlightButton } from '@/components/SpotlightButton';
 import { GoogleGeminiEffect } from '@/components/miscellaneous';
+import { AnimatedTooltip } from '@/components/toolpit';
 
 const HeroSection = () => {
   return (
@@ -613,16 +614,23 @@ const BlogCard = ({
 
 const MemberSection = () => {
   const [members, setMembers] = useState<Member[]>([]);
+
   useEffect(() => {
     const fetchData = async () => {
       const res = await getallmembers();
-      setMembers(res.account);
+      const sortedMembers = res.account.sort((a: Member, b: Member) => {
+        if (a.image && !b.image) return -1;
+        if (!a.image && b.image) return 1;
+        return 0;
+      });
+      setMembers(sortedMembers);
     };
 
     fetchData();
 
     return () => {};
   }, []);
+
   return (
     <section
       className="flex flex-col pb-20 text-center text-white relative"
@@ -791,6 +799,100 @@ const GimecEffect = () => {
     </>
   );
 };
+
+const ProjectCard = ({ name, description, image, id, members }: Project) => {
+  return (
+    <article className="flex gap-5 max-md:flex-col max-md:gap-0">
+      <div className="flex flex-col w-3/12 max-md:ml-0 max-md:w-full">
+        <figure className="flex flex-col justify-center items-center w-full aspect-square max-md:mt-10">
+          <Image
+            src={image}
+            loading="lazy"
+            alt={name}
+            height={298}
+            width={298}
+            className="object-cover object-center w-full h-full aspect-square"
+          />
+        </figure>
+      </div>
+      <div className="flex flex-col ml-5 w-9/12 max-md:ml-0 max-md:w-full">
+        <div className="flex flex-col self-stretch my-auto font-semibold text-center leading-[92%] max-md:mt-10 max-md:max-w-full">
+          <h2 className="text-3xl text-navbar max-md:max-w-full text-start">
+            {name}
+          </h2>
+          <p className="mt-6 text-lg font-nunito font-medium leading-5 text-justify text-neutral-950 max-md:max-w-full">
+            {shrinkString({ str: description, len: 300 })}
+          </p>
+          <div className="flex gap-5 justify-between items-center mt-6 text-lg text-orange-400 max-md:flex-wrap max-md:max-w-full">
+            <div className="flex flex-row items-center justify-center mb-10">
+              <AnimatedTooltip members={members} />{' '}
+              <span className="ml-5 text-xs text-black font-poppins">
+                + {members.length - 6}
+              </span>
+            </div>
+            <Link
+              href={`/project/details?id=${id}&name=${encryptString(name)}`}
+              className=" font-worksans"
+            >
+              Read More
+            </Link>
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+};
+
+const ProjectSection = () => {
+  const [projects, setProjects] = useState<Project[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await getAllProject();
+      setProjects(res.projects);
+    };
+
+    fetchData();
+  }, []);
+
+  return (
+    <section
+      className="flex flex-col pb-20 text-center text-white relative"
+      style={{ backgroundImage: 'url(/proimage.png)' }}
+    >
+      <div className="container">
+        <div className="flex flex-col justify-center items-center p-20">
+          <div className="flex flex-col w-full items-center max-w-[658px] justify-center">
+            <div className="flex w-full">
+              <div className="arrow">
+                <span />
+                <span />
+                <span />
+              </div>
+              <div className="mt-7 text-6xl text-center leading-[57.6px] text-sky-950 max-md:max-w-full max-md:text-4xl w-full font-rama">
+                Starters Products & Projects
+              </div>
+            </div>
+          </div>
+          <div className="mt-28 max-md:mt-10 max-md:max-w-full gap-4 space-y-5">
+            {projects.map(pro => (
+              <ProjectCard {...pro} key={pro.id} />
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="w-full items-center justify-center flex">
+        <Link href="/projects" className="w-full">
+          <SpotlightButton
+            title="View All"
+            className="mt-14 w-[522px] font-poppins"
+          />
+        </Link>
+      </div>
+    </section>
+  );
+};
+
 export {
   AtGlance,
   FaqSection,
@@ -798,5 +900,6 @@ export {
   MemberSection,
   PillarSection,
   Trends,
-  GimecEffect
+  GimecEffect,
+  ProjectSection
 };

@@ -35,7 +35,7 @@ const MobileNav = () => {
         >
           {NAV_LINKS.map(item => (
             <Link
-              href={item.link}
+              href={`/${item.link}?path=${item.link}`}
               key={item.label}
               onClick={() => setShowMobileMenu(false)}
               className="w-full uppercase text-3xl md:text-5xl  transition-all p-4  hover:bg-white hover:text-black hover:pl-12 font-cav font-medium"
