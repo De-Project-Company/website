@@ -1,4 +1,3 @@
-// @ts-nocheck
 'use client';
 import React, { useEffect, useState } from 'react';
 import { getMemberById } from '@/action';
@@ -7,32 +6,23 @@ import { SlCalender } from 'react-icons/sl';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/utils';
 import Jumbotron from '@/components/ui/jumbotron';
+import { Member } from '@/types';
 
 interface ProfileProps {
   id: string;
 }
 
-interface MemberData {
-  member: {
-    fullName: string;
-    department: string;
-    address?: string;
-    status: string;
-  };
-  user: {
-    email: string;
-  };
-}
-
 const Profile: React.FC<ProfileProps> = ({ id }) => {
-  const [member, setMember] = useState<MemberData | null>(null);
+  const [member, setMember] = useState<Member | null>(null);
 
   // fetch the unique id
   useEffect(() => {
     const fetchById = async () => {
       try {
         const res = await getMemberById(id);
-        setMember(res);
+        if (res && res.member) {
+          setMember(res.member);
+        }
       } catch (error) {
         console.error('Failed to fetch member data:', error);
       }
@@ -54,26 +44,22 @@ const Profile: React.FC<ProfileProps> = ({ id }) => {
             <div className=" rounded-full relative border-0 overflow-hidden h-40 w-40">
               <Image
                 className="object-cover h-full w-full"
-                src={`https://ui-avatars.com/api/?name=${member?.user?.email}&background=random`}
+                src={` ${member?.image ? member?.image : 'https://ui-avatars.com/api/?name=${member?.user?.email}&background=random'}`}
                 alt={`profile-image`}
                 height={100}
                 width={100}
               />
             </div>
 
-            <h3 className="font-bold ">{member?.member?.fullName}</h3>
-            <h3>{member?.member?.department}</h3>
-            <h3>
-              {member?.member?.address
-                ? member?.member?.address
-                : 'Abuja, nigeria'}
-            </h3>
+            <h3 className="font-bold ">{member?.fullName}</h3>
+            <h3>{member?.department}</h3>
+            <h3>{member?.address ? member?.address : 'Abuja, nigeria'}</h3>
 
             <button
               type="submit"
               className="bg-[#DBE9FF]/50 px-3 py-2 font-bold hover:bg-[[#DBE9FF] hover:shadow-sm my-4"
             >
-              Hire {member?.member?.fullName}
+              Hire {member?.fullName}
             </button>
 
             <div className="mt-4">
@@ -87,7 +73,7 @@ const Profile: React.FC<ProfileProps> = ({ id }) => {
               </div>
               <div className="flex items-center space-x-2">
                 <SlCalender />
-                <span> status: {member?.member?.status}</span>
+                <span> status: {member?.status}</span>
               </div>
             </div>
 

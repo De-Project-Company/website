@@ -5,6 +5,7 @@ import { NewMemberSchema, OtpSchema } from '@/schemas';
 import * as z from 'zod';
 import { Baseurl } from '@/utils';
 import Calls from './axios';
+import { Member } from '@/types';
 
 const $Http = Calls(Baseurl);
 
@@ -84,13 +85,6 @@ const getallmembers = async () => {
  * @PARAMS: id
  * /api/v1/members/get-member-by-id?id=
  * */
-
-interface Member {
-  // Define the expected structure of the member object
-  id: string;
-  name: string;
-  // Add other properties as needed
-}
 
 const getMemberById = async (id: string): Promise<Member | null> => {
   try {
