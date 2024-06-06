@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import useMediaQuery from '@/hooks/use-media-query';
 import {
   HeroSection,
   AtGlance,
@@ -9,24 +8,21 @@ import {
   FaqSection,
   Trends,
   MemberSection,
-  GimecEffect
+  GimecEffect,
+  ProjectSection
 } from './modules';
 
 export const LandingPage = () => {
-  const { isDesktop } = useMediaQuery();
-
-  if (isDesktop) {
-    return (
-      <main className="hidden lg:block">
-        <HeroSection />
-        <AtGlance />
-        <PillarSection />
-        <FaqSection />
-        <Trends />
-        <GimecEffect />
-        <MemberSection />
-      </main>
-    );
-  }
-  return <div>LandingPage</div>;
+  return (
+    <main className="hidden lg:block">
+      <HeroSection />
+      <AtGlance />
+      <PillarSection />
+      <FaqSection />
+      <Trends />
+      <MemberSection />
+      <ProjectSection />
+      <GimecEffect />
+    </main>
+  );
 };

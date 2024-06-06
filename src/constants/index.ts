@@ -70,6 +70,20 @@ const NAV_LINKS: NavLink[] = [
     link: 'get-started'
   }
 ];
+const PROJECT_LINK: NavLink[] = [
+  {
+    label: 'traverse',
+    link: ''
+  },
+  {
+    label: 'paygo',
+    link: ''
+  },
+  {
+    label: 'edtech',
+    link: ''
+  }
+];
 
 const SOCIAL_LINKS: SocialLink[] = [
   {
@@ -94,4 +108,4 @@ const SOCIAL_LINKS: SocialLink[] = [
   }
 ];
 
-export { members, NAV_LINKS, SOCIAL_LINKS };
+export { members, NAV_LINKS, SOCIAL_LINKS, PROJECT_LINK };
