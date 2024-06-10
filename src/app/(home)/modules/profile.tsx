@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/utils';
 import Jumbotron from '@/components/ui/jumbotron';
 import { Member } from '@/types';
+import { SingleProjectCard } from './index';
 
 interface ProfileProps {
   id: string;
@@ -22,6 +23,7 @@ const Profile: React.FC<ProfileProps> = ({ id }) => {
         const res = await getMemberById(id);
         if (res && res.member) {
           setMember(res.member);
+          // console.log(res.member);
         }
       } catch (error) {
         console.error('Failed to fetch member data:', error);
@@ -44,7 +46,7 @@ const Profile: React.FC<ProfileProps> = ({ id }) => {
             <div className=" rounded-full relative border-0 overflow-hidden h-40 w-40">
               <Image
                 className="object-cover h-full w-full"
-                src={` ${member?.image ? member?.image : 'https://ui-avatars.com/api/?name=${member?.user?.email}&background=random'}`}
+                src={` ${member?.image ? member?.image : `https://ui-avatars.com/api/?name=${member?.email}&background=random`}`}
                 alt={`profile-image`}
                 height={100}
                 width={100}
@@ -89,7 +91,9 @@ const Profile: React.FC<ProfileProps> = ({ id }) => {
             </TabsTrigger>
             <TabsTrigger value="publication">Publications</TabsTrigger>
           </TabsList>
-          <TabsContent value="projects">loading ....</TabsContent>
+          <TabsContent value="projects">
+            <SingleProjectCard projects={member?.projects} />
+          </TabsContent>
           <TabsContent value="publication">Never loading ....</TabsContent>
         </Tabs>
       </div>
