@@ -17,7 +17,7 @@ const EventsPage = () => {
       <div className="w-full max-h-[343px] relative mb-8 aspect-video">
         <Image
           loading="lazy"
-          src="/events-page-hero.png  "
+          src="/events-page-hero.png"
           className="object-cover object-left-top brightness-[.4] sepia-1"
           alt="hero image"
           fill
