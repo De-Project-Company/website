@@ -49,7 +49,7 @@ const ForumPage: React.FC = () => {
   ];
 
   return (
-    <div className="flex flex-col pt-12 pb-4 bg-white rounded-none shadow-sm">
+    <div className="flex flex-col pt-5 md:pt-12 pb-4 bg-white rounded-none md:shadow-sm mb-[20px]">
       <div className="flex flex-col px-20 w-full text-base leading-5 text-orange-500 max-md:px-5 max-md:max-w-full">
         <header className="self-center">
           <h1 className="text-center text-2xl font-semibold">
@@ -60,7 +60,7 @@ const ForumPage: React.FC = () => {
           </p>
         </header>
       </div>
-      <div className="flex items-center justify-between w-full container mt-[40px]">
+      <div className="flex flex-col md:flex-row items-center justify-between w-full container mt-[40px]">
         <div className="flex flex-col gap-5">
           {firstSection.map(sec => (
             <Section key={sec.title} {...sec} />
