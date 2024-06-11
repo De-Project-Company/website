@@ -1,15 +1,16 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { SpotlightButton } from '@/components/SpotlightButton';
 
 const page = () => {
   return (
-    <div className="flex flex-col justify-center px-12 pt-5 pb-8 bg-white  max-md:px-5 container rounded-2xl border border-nav-text-active bg-gradient-to-b from-white via-[#fafafd] to-[#cbd2e6]">
+    <div className="flex flex-col pt-5 md:pt-12 pb-4 bg-white rounded-none md:shadow-sm mb-[20px] container">
       <div className="max-md:max-w-full">
         <div className="flex gap-5 max-md:flex-col max-md:gap-0">
           <div className="flex flex-col w-[43%] max-md:ml-0 max-md:w-full">
             <div className="flex flex-col grow max-md:mt-10 max-md:max-w-full">
-              <div className="text-4xl font-semibold leading-9 text-orange-500 max-md:max-w-full font-worksans">
+              <div className="text-4xl font-semibold leading-9 text-orange-500 max-md:max-w-full font-worksans text-center">
                 Starters House Community
               </div>
               <div className="flex flex-col justify-center mt-7 max-md:max-w-full">
@@ -18,7 +19,7 @@ const page = () => {
                   alt="about image"
                   width={468}
                   height={344}
-                  className="w-full  max-md:max-w-full md:rounded-3xl rounded-xl"
+                  className="w-full md:rounded-3xl rounded-xl"
                 />
               </div>
               <div className="mt-8 text-base leading-7 text-sky-950 max-md:max-w-full">
@@ -26,6 +27,21 @@ const page = () => {
                 enthusiasts and professionals. It&apos;s a place where
                 innovation, collaboration, and growth are part of everyday life.
               </div>
+              <div className="mt-3 max-md:max-w-full text-orange-500 font-medium text-lg md:text-2xl">
+                Vision and Missions
+              </div>
+              <div className="mt-3 text-base leading-7 text-sky-950 max-md:max-w-full">
+                Our vision is to create a world where technology brings people
+                together to solve challenges. Our mission is to provide a
+                platform that fosters learning, innovation, and community
+                spirit.
+              </div>
+              <Link href="/get-started" className="w-full">
+                <SpotlightButton
+                  title="Join The Community"
+                  className="mt-9 w-full font-poppins"
+                />
+              </Link>
             </div>
           </div>
           <div className="flex flex-col ml-5 w-[57%] max-md:ml-0 max-md:w-full">
@@ -81,11 +97,19 @@ const page = () => {
                   </li>
                 </ul>
               </div>
+              <div className="mt-9 max-md:max-w-full">
+                Joining Starters House
+              </div>
+              <div className="mt-3 text-base leading-7 text-sky-950 max-md:max-w-full">
+                Becoming a part of Starters House Community is simple.{' '}
+                <span className="text-navbar">
+                  Sign up, create your profile,{' '}
+                </span>
+                and start engaging with a network of tech professionals and
+                enthusiasts who are eager to collaborate and grow together.. 🚀
+              </div>
             </div>
           </div>
-        </div>
-        <div className="w-full justify-end flex text-nav-text-active font-medium">
-          <Link href="/about-us?path=aboutus">Read More</Link>
         </div>
       </div>
     </div>
