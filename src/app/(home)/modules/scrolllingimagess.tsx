@@ -12,6 +12,7 @@ export const InfiniteMovingCards = ({
   className
 }: {
   items: {
+    id: string | number;
     image?: string;
   }[];
   direction?: 'left' | 'right';
@@ -86,7 +87,7 @@ export const InfiniteMovingCards = ({
         {items.map(item => (
           <li
             className="max-w-[150px] h-[180px] w-full relative rounded-2xl overflow-hidden flex-shrink-0"
-            key={item.image}
+            key={item.id}
           >
             <Image
               src={item.image ? item.image : '/member2.png'}
