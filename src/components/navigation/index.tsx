@@ -246,7 +246,7 @@ const NavigationBar = () => {
           asChild
           className="w-[152px] h-[46px] py-4 bg-nav-text-active text-nav-text hover:bg-nav-text-active hover:text-nav-text rounded-md hidden lg:block text-center"
         >
-          <Link href="/register" className="text-center flex h-full">
+          <Link href="/get-started" className="text-center flex h-full">
             Get Started
           </Link>
         </Button>
