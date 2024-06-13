@@ -10,7 +10,6 @@
     "check-types": "tsc --pretty --noEmit",
     "check-format": "prettier --check .",
     "check-lint": "eslint . --ext ts --ext tsx --ext js",
-    "postinstall": "husky install",
     "prepare": "husky",
     "format": "npm run check-lint --fix && npx prettier --write ."
   },

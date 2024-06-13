@@ -1,5 +1,25 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { cn } from '@/utils';
+
+type SectionProps = {
+  title: string;
+  description: string;
+  className?: string;
+};
+
+export const Section: React.FC<SectionProps> = ({
+  title,
+  description,
+  className
+}) => (
+  <section className={cn('', className)}>
+    <h2 className="text-orange-500 font-semibold text-xl">{title}</h2>
+    <p className="mt-2.5 leading-5 text-sky-950 w-[350px] text-xlg font-medium">
+      {description}
+    </p>
+  </section>
+);
 
 const AboutUs = () => {
   return (
@@ -94,7 +114,7 @@ const AboutUs = () => {
 const Events = () => {
   return (
     <div className="flex flex-col px-12 pt-2 pb-9 bg-white  max-md:px-5 container rounded-2xl border border-nav-text-active bg-gradient-to-b from-white via-[#fafafd] to-[#cbd2e6]">
-      <div className="max-md:max-w-full">
+      <div className="">
         <div className="text-4xl font-semibold leading-9 text-orange-500 max-md:max-w-full font-worksans text-center">
           Upcoming Events at Starters House Community
         </div>
@@ -161,84 +181,83 @@ const Events = () => {
 };
 
 const Formus = () => {
+  const firstSection = [
+    {
+      title: 'General Discussion',
+      description:
+        'For all things tech and community-related. A space to discuss news, trends, and ideas.'
+    },
+    {
+      title: 'Introductions',
+      description:
+        'New to Starters House? Introduce yourself and meet the community.'
+    },
+    {
+      title: 'Tech Talk',
+      description:
+        'Deep dives into specific technologies, programming languages, and tools.'
+    },
+    {
+      title: 'Project Showcase',
+      description:
+        'Share your latest projects, get feedback, and inspire others.'
+    }
+  ];
+
+  const secondSection = [
+    {
+      title: 'Learning Resources',
+      description:
+        'Discuss tutorials, courses, books, and other learning materials.'
+    },
+    {
+      title: 'Career Advice',
+      description:
+        'Exchange tips on career development, job hunting, and professional growth.'
+    },
+    {
+      title: 'Event Discussions',
+      description:
+        'Talk about past and upcoming events, arrange meetups, and share experiences.'
+    },
+    {
+      title: 'Off-Topic Lounge',
+      description:
+        'A place for conversations that don’t fit elsewhere. Relax and enjoy the camaraderie.'
+    }
+  ];
   return (
     <div className="flex flex-col pt-12 pb-4 bg-white container rounded-2xl border border-nav-text-active bg-gradient-to-b from-white via-[#fafafd] to-[#cbd2e6]">
-      <div className="flex flex-col px-20 w-full text-base leading-5 text-orange-500 max-md:px-5 max-md:max-w-full">
-        <div className="self-center text-justify">
-          Welcome to the Starters House Forums
+      <div className="flex flex-col pb-4 rounded-none shadow-sm">
+        <div className="flex flex-col px-20 w-full text-base leading-5 text-orange-500 max-md:px-5 max-md:max-w-full">
+          <header className="self-center">
+            <h1 className="text-center text-2xl font-semibold">
+              Welcome to the Starters House Forums
+            </h1>
+            <p className="mt-2.5 text-justify text-sky-950 max-md:max-w-full">
+              A place to connect, share, and grow with fellow tech enthusiasts.
+            </p>
+          </header>
         </div>
-        <div className="self-center mt-2.5 text-justify text-sky-950 max-md:max-w-full">
-          A place to connect, share, and grow with fellow tech enthusiasts.
-        </div>
-        <div className="self-start mt-20 text-justify max-md:mt-10 max-md:ml-2.5">
-          General Discussion
-        </div>
-        <div className="mt-2.5 leading-5 text-justify text-sky-950 w-[318px] max-md:ml-2.5">
-          For all things tech and community-related. A space to discuss news,
-          trends, and ideas.
-        </div>
-        <div className="z-10 self-end mt-0 max-md:mr-2.5">
-          Learning Resources
-        </div>
-        <div className="self-end mt-2.5 leading-5 text-sky-950 w-[318px] max-md:mr-2.5">
-          Discuss tutorials, courses, books, and other learning materials.
-        </div>
-        <div className="self-end mt-20 max-md:mt-10 max-md:mr-2.5">
-          Career Advice
-        </div>
-        <div className="self-end mt-2.5 leading-5 text-sky-950 w-[318px] max-md:mr-2.5">
-          Exchange tips on career development, job hunting, and professional
-          growth.
-        </div>
-      </div>
-      <div className="flex z-10 flex-col px-20 -mt-12 w-full text-base leading-5 text-orange-500 max-md:px-5 max-md:max-w-full">
-        <div className="self-start text-justify max-md:ml-2.5">
-          Introductions
-        </div>
-        <div className="mt-2.5 leading-5 text-justify text-sky-950 w-[318px] max-md:ml-2.5">
-          New to Starters House? Introduce yourself and meet the community.
-        </div>
-        <div className="self-end mt-16 max-md:mt-10 max-md:mr-2.5">
-          Event Discussions
-        </div>
-        <div className="self-end mt-2.5 leading-5 text-sky-950 w-[318px] max-md:mr-2.5">
-          Talk about past and upcoming events, arrange meetups, and share
-          experiences.
-        </div>
-      </div>
-      <div className="flex z-10 flex-col items-start px-20 -mt-12 w-full max-md:px-5 max-md:max-w-full">
-        <div className="text-base leading-5 text-justify text-orange-500 max-md:ml-2.5">
-          Tech Talk
-        </div>
-        <div className="mt-2.5 text-base leading-5 text-justify text-sky-950 w-[318px] max-md:ml-2.5">
-          Deep dives into specific technologies, programming languages, and
-          tools.
-        </div>
-        <div className="flex flex-col self-stretch mt-16 max-md:mt-10 max-md:mr-2.5 max-md:max-w-full">
-          <div className="flex gap-5 text-base max-md:flex-wrap max-md:max-w-full">
-            <div className="flex flex-col flex-1 self-start mt-5 text-justify">
-              <div className="text-orange-500 leading-[120%]">
-                Project Showcase
-              </div>
-              <div className="mt-2.5 leading-5 text-sky-950">
-                Share your latest projects, get feedback, and inspire others.
-              </div>
-            </div>
-            <div className="flex flex-col flex-1">
-              <div className="text-orange-500 leading-[120%]">
-                Off-Topic Lounge
-              </div>
-              <div className="mt-2.5 leading-5 text-sky-950">
-                A place for conversations that don’t fit elsewhere. Relax and
-                enjoy the camaraderie.
-              </div>
-            </div>
+        <div className="flex items-center justify-between w-full mt-[40px]">
+          <div className="flex flex-col gap-5">
+            {firstSection.map(sec => (
+              <Section key={sec.title} {...sec} />
+            ))}
           </div>
-          <div className="self-center mt-24 text-lg font-medium leading-5 text-center text-zinc-800 max-md:mt-10 max-md:max-w-full">
-            These events are just a glimpse of what we offer at Starters House
-            Community. Let’s innovate and grow together! 🚀
+          <div className="flex flex-col gap-5">
+            {secondSection.map(sec => (
+              <Section key={sec.title} {...sec} />
+            ))}
           </div>
         </div>
+        <div className="self-center my-[40px] text-lg font-medium leading-5 text-center text-zinc-800 max-md:mt-10 max-md:max-w-full">
+          These events are just a glimpse of what we offer at Starters House
+          Community. Let’s innovate and grow together! 🚀
+        </div>
+      </div>
+      <div className="w-full justify-end flex text-nav-text-active font-medium">
+        <Link href="/formus?path=formus">Learn More</Link>
       </div>
     </div>
   );

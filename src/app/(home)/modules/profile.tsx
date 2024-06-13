@@ -94,7 +94,7 @@ const Profile: React.FC<ProfileProps> = ({ id }) => {
           <TabsContent value="projects">
             <SingleProjectCard projects={member?.projects} />
           </TabsContent>
-          <TabsContent value="publication">Never loading ....</TabsContent>
+          <TabsContent value="publication"> No Publication Yet !!</TabsContent>
         </Tabs>
       </div>
     </>

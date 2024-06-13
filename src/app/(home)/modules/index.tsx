@@ -125,7 +125,7 @@ const AtGlance = () => {
 };
 
 const GlanceCard = ({ amount, text }: { amount: number; text: string }) => (
-  <div className="w-[218px] h-[246px] flex flex-col items-center justify-center bg-orange-200 font-nunito rounded-3xl">
+  <div className="md:w-[218px] md:h-[246px] flex flex-col items-center justify-center bg-orange-200 font-nunito rounded-3xl w-full">
     <div className="flex flex-col items-center justify-center">
       <div className="mt-5 text-2xl font-medium text-center text-sky-950">
         over
@@ -941,9 +941,126 @@ const SingleProjectCard: React.FC<SingleProjectCardProps> = ({ projects }) => {
           </div>
         ))
       ) : (
-        <p>Go and buy starlink...</p>
+        <p> Loading ...</p>
       )}
     </section>
+  );
+};
+
+const MobileHero = () => {
+  return (
+    <>
+      <div className="relative overflow-hidden before:absolute before:top-0 before:start-1/2 before:bg-[url('https://preline.co/assets/svg/examples/squared-bg-element.svg')] before:bg-no-repeat before:bg-top before:size-full before:-z-[1] before:transform before:-translate-x-1/2">
+        <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10">
+          <div className="max-w-xl text-center mx-auto">
+            <h1 className="block font-bold text-gray-800 text-4xl md:text-5xl lg:text-6xl font-rama">
+              Starters House
+            </h1>
+            <span className="bg-[url('https://assets.website-files.com/63904f663019b0d8edf8d57c/6390526ac2a607693620c97b_Rectangle%2010.svg')] bg-cover bg-center px-4 text-white text-xl font-semibold md:text-3xl">
+              Community
+            </span>
+            <h1 className="mb-4 text-xl font-semibold md:text-6xl">
+              &quot;Where Tech Enthusiasts Thrive!&quot;
+            </h1>
+          </div>
+
+          <div className="mt-5 max-w-3xl text-center mx-auto">
+            <p className="text-lg text-gray-600">
+              Discover a place where tech enthusiasts from all walks of life
+              come together to share, learn, and grow.
+            </p>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+const GlanceMob = () => {
+  return (
+    <motion.section
+      initial={{ y: 100, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ delay: 0.05, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+      className="flex justify-center items-center py-8 bg-[#FFEAD9] my-[20px] bg-opacity-30"
+    >
+      <div className="w-full container">
+        <div className="flex gap-5 max-md:flex-col max-md:gap-0">
+          <div className="flex flex-col w-[35%] max-md:ml-0 max-md:w-full ">
+            <div className="flex flex-col justify-center self-stretch my-auto font-medium text-sky-950 relative">
+              <div className="text-base tracking-widest leading-5 text-center text-orange-500 ">
+                Starters House Community
+              </div>
+              <div className="flex gap-2.5 mt-5 leading-[57.6px] text-2xl relative">
+                <div className="arrow ml-4">
+                  <span />
+                  <span />
+                  <span />
+                </div>
+                <div
+                  // onMouseEnter={handleMouseEnter}
+                  // data-value="At a Glance"
+                  className="text-4xl font-rama text-center w-full"
+                >
+                  At a Glance
+                </div>
+              </div>
+              <div className="mt-5 text-2xl tracking-widest leading-8 text-center">
+                Explore Starters House by Numbers
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col ml-5 w-[65%] max-md:ml-0 max-md:w-full">
+            <div className="flex-wrap grow justify-center content-start max-md:mt-10 max-md:max-w-full">
+              <div className="flex gap-5 max-md:flex-col max-md:gap-0 space-y-4">
+                {glance.map(glance => (
+                  <GlanceCard
+                    key={glance.text}
+                    amount={glance.amount}
+                    text={glance.text}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.section>
+  );
+};
+
+const PillarMob = () => {
+  return (
+    <motion.section
+      initial={{ y: 100, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ delay: 0.05, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
+      className="flex flex-col justify-center items-center bg-sky-50 my-[20px]"
+    >
+      <div className="custom:container px-[10px] pb-20">
+        <div className="flex flex-col justify-center items-center p-20">
+          <div className="flex w-full items-center max-w-[658px] justify-center">
+            <div className="arrow hidden md:inline">
+              <span />
+              <span />
+              <span />
+            </div>
+            <div className="mt-7 text-6xl text-center leading-[57.6px] text-sky-950 max-md:max-w-full max-md:text-4xl w-full font-rama">
+              Our Pillars of Strenght
+            </div>
+          </div>
+          <div className="flex items-center justify-between w-full flex-wrap my-12">
+            {pillars.map(pillar => (
+              <PillarCard {...pillar} key={pillar.id} />
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-[20px] text-2xl font-medium leading-10 text-center text-neutral-950 max-md:mt-10 max-md:max-w-full">
+          **Together, Let&apos;s Start Something Amazing!**
+        </div>
+      </div>
+    </motion.section>
   );
 };
 
@@ -956,5 +1073,8 @@ export {
   Trends,
   GimecEffect,
   ProjectSection,
-  SingleProjectCard
+  SingleProjectCard,
+  MobileHero,
+  GlanceMob,
+  PillarMob
 };

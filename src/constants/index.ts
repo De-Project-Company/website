@@ -87,7 +87,7 @@ const NAV_LINKS: NavLink[] = [
   },
   {
     label: 'forum',
-    link: 'forum'
+    link: 'forums'
   },
   {
     label: 'events',
