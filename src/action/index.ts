@@ -5,6 +5,7 @@ import { NewMemberSchema, OtpSchema } from '@/schemas';
 import * as z from 'zod';
 import { Baseurl } from '@/utils';
 import Calls from './axios';
+import { Member } from '@/types';
 
 const $Http = Calls(Baseurl);
 
@@ -79,6 +80,24 @@ const getallmembers = async () => {
   }
 };
 
+/**
+ * GET MEMBER BY ID
+ * @PARAMS: id
+ * /api/v1/members/get-member-by-id?id=
+ * */
+
+const getMemberById = async (id: string): Promise<Member | null> => {
+  try {
+    const response = await $Http.get(
+      `/api/v1/members/get-member-by-id?id=${id}`
+    );
+    return response.data;
+  } catch (e: any) {
+    console.error('Error getting data by id !!!', e);
+    return null;
+  }
+};
+
 const getAllProject = async () => {
   try {
     const res = await $Http.get('/api/v1/project');
@@ -95,4 +114,4 @@ const getAllProject = async () => {
   }
 };
 
-export { CreateUser, Otp, getallmembers, getAllProject };
+export { CreateUser, Otp, getallmembers, getAllProject, getMemberById };

@@ -1,4 +1,5 @@
 interface Member {
+  member: Member | null;
   id: string;
   preferedName?: string;
   fullName: string;

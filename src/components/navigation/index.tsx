@@ -1,7 +1,7 @@
 'use client';
 
-import useMediaQuery from '@/hooks/use-media-query';
 import useWindowHeight from '@/hooks/useDimension';
+import useMediaQuery from '@/hooks/use-media-query';
 import { cn } from '@/utils';
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';

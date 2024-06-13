@@ -48,6 +48,38 @@ const members = [
   }
 ];
 
+/**
+ * -- Resources
+ * image,
+ * title,
+ * fileType,
+ * authorName,
+ * authorProfileImage
+ * listenNow
+ * */
+
+const resources = [
+  {
+    id: 1,
+    image: '/resources/author1.png',
+    title: "Whether you're a professional or just E-Book",
+    fileType: 'E-Book',
+    authorName: 'Olatunji Ibrahim',
+    authorProfileImage: '/resources/author1image.jpeg',
+    hearMedium: 'listenNow'
+  },
+
+  {
+    id: 2,
+    image: '/resources/author2.png',
+    title: "Whether you're a professional or just E-Book",
+    fileType: 'pdf',
+    authorName: 'Abangada Ibrahim',
+    authorProfileImage: '/resources/author2image.jpeg',
+    hearMedium: 'view'
+  }
+];
+
 const NAV_LINKS: NavLink[] = [
   {
     label: 'about us',
@@ -108,4 +140,4 @@ const SOCIAL_LINKS: SocialLink[] = [
   }
 ];
 
-export { members, NAV_LINKS, SOCIAL_LINKS, PROJECT_LINK };
+export { members, NAV_LINKS, SOCIAL_LINKS, PROJECT_LINK, resources };

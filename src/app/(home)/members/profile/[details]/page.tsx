@@ -1,15 +1,20 @@
+'use client';
+
 import React from 'react';
+import Profile from '@/app/(home)/modules/profile';
 
 interface PageProps {
   searchParams: {
-    [key: string]: string | undefined;
+    [key: string]: string;
   };
 }
 
-const page = ({ searchParams: { name, id } }: PageProps) => {
-  console.log(name);
-  console.log(id);
-  return <div>page</div>;
+const page = ({ searchParams: { id } }: PageProps) => {
+  return (
+    <div>
+      <Profile id={id} />
+    </div>
+  );
 };
 
 export default page;
