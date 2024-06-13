@@ -896,7 +896,7 @@ const ProjectSection = () => {
 const MobileHero = () => {
   return (
     <>
-      <div className="relative overflow-hidden before:absolute before:top-0 before:start-1/2 before:bg-[url('https://preline.co/assets/svg/examples/squared-bg-element.svg')] before:bg-no-repeat before:bg-top before:size-full before:-z-[1] before:transform before:-translate-x-1/2">
+      <div className="relative before:absolute before:top-0 before:start-1/2 before:bg-[url('https://preline.co/assets/svg/examples/squared-bg-element.svg')] before:bg-no-repeat before:bg-top before:size-full before:-z-[1] before:transform before:-translate-x-1/2 overflow-hidden">
         <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10">
           <div className="max-w-xl text-center mx-auto">
             <h1 className="block font-bold text-gray-800 text-4xl md:text-5xl lg:text-6xl font-rama">
@@ -928,7 +928,7 @@ const GlanceMob = () => {
       initial={{ y: 100, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ delay: 0.05, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-      className="flex justify-center items-center py-8 bg-[#FFEAD9] my-[20px] bg-opacity-30"
+      className="flex justify-center items-center py-8 bg-[#FFEAD9] my-[20px] bg-opacity-30 overflow-hidden"
     >
       <div className="w-full container">
         <div className="flex gap-5 max-md:flex-col max-md:gap-0">
@@ -938,11 +938,6 @@ const GlanceMob = () => {
                 Starters House Community
               </div>
               <div className="flex gap-2.5 mt-5 leading-[57.6px] text-2xl relative">
-                <div className="arrow ml-4">
-                  <span />
-                  <span />
-                  <span />
-                </div>
                 <div
                   // onMouseEnter={handleMouseEnter}
                   // data-value="At a Glance"
@@ -981,17 +976,12 @@ const PillarMob = () => {
       initial={{ y: 100, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ delay: 0.05, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-      className="flex flex-col justify-center items-center bg-sky-50 my-[20px]"
+      className="flex flex-col justify-center items-center bg-sky-50 my-[20px] overflow-hidden"
     >
-      <div className="custom:container px-[10px] pb-20">
+      <div className="px-[10px] pb-20">
         <div className="flex flex-col justify-center items-center p-20">
           <div className="flex w-full items-center max-w-[658px] justify-center">
-            <div className="arrow hidden md:inline">
-              <span />
-              <span />
-              <span />
-            </div>
-            <div className="mt-7 text-6xl text-center leading-[57.6px] text-sky-950 max-md:max-w-full max-md:text-4xl w-full font-rama">
+            <div className="mt-7 text-2xl text-center leading-[30px] text-sky-950 max-md:max-w-full max-md:text-4xl w-full font-rama">
               Our Pillars of Strenght
             </div>
           </div>
@@ -1002,7 +992,7 @@ const PillarMob = () => {
           </div>
         </div>
 
-        <div className="mt-[20px] text-2xl font-medium leading-10 text-center text-neutral-950 max-md:mt-10 max-md:max-w-full">
+        <div className="mt-[20px] text-xs md:text-2xl font-medium leading-10 text-center text-neutral-950 max-md:mt-10 max-md:max-w-full">
           **Together, Let&apos;s Start Something Amazing!**
         </div>
       </div>

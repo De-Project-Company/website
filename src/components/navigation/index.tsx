@@ -192,7 +192,7 @@ const NavigationBar = () => {
         className={cn(
           'max-[500px]:py-2 px-4 sm:px-8 xl:px-16 2xl:px-24 flex w-full justify-between items-center  transition-colors duration-500 bg-navbar relative',
           scrollHeight > 50
-            ? ' fixed backdrop-blur-xl top-0 left-0  z-50 -translate-y-28 opacity-0 animate-slideDown bg-navbar/50 py-2 border-b border-navbar shadow-md'
+            ? ' fixed backdrop-blur-xl z-50 -translate-y-28 opacity-0 animate-slideDown bg-navbar/50 py-2 border-b border-navbar shadow-md'
             : 'sm:py-2 py-2',
           {
             'bg-navbar/60 ': scrollHeight > 800 && scrollHeight < 4300
@@ -211,7 +211,7 @@ const NavigationBar = () => {
         </Link>
         <div
           className={cn(
-            'flex items-center gap-x-5 lg:gap-x-7 2xl:gap-x-10 w-full justify-center max-w-[60%]',
+            'flex items-center gap-x-5 lg:gap-x-7 2xl:gap-x-10 w-full justify-center max-w-[60%] lg:hidden',
             !isDesktop && 'hidden'
           )}
         >
@@ -246,7 +246,7 @@ const NavigationBar = () => {
           asChild
           className="w-[152px] h-[46px] py-4 bg-nav-text-active text-nav-text hover:bg-nav-text-active hover:text-nav-text rounded-md hidden lg:block text-center"
         >
-          <Link href="/register" className="text-center flex h-full">
+          <Link href="/get-started" className="text-center flex h-full">
             Get Started
           </Link>
         </Button>
