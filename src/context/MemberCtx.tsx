@@ -13,8 +13,11 @@ interface MemberCreationProps {
   setmemberregistrationData: React.Dispatch<
     React.SetStateAction<MemberCreationsProps>
   >;
+
   currentPage: number;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  secondForm: MemberCreationsTwoProps;
+  setsecondForm: React.Dispatch<React.SetStateAction<MemberCreationsTwoProps>>;
 }
 
 interface MemberCreationsProps {
@@ -25,6 +28,18 @@ interface MemberCreationsProps {
   whatsappnumber: string;
   image: string;
   preferedName: string;
+}
+
+interface MemberCreationsTwoProps {
+  image: string;
+  stack: string[];
+  intrests: string;
+  portfolio: string;
+  experience: string;
+  expetations: string;
+  commetmentlevel: number;
+  programminglanguage: string[];
+  whatdoyoubringtothetable: string;
 }
 
 const defaultMemberData: MemberCreationsProps = {
@@ -44,6 +59,9 @@ export const MemberContext = createContext<MemberCreationProps | undefined>(
 const MemberContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [memberregistrationData, setmemberregistrationData] =
     useState<MemberCreationsProps>(defaultMemberData);
+  const [secondForm, setsecondForm] = useState<MemberCreationsTwoProps>(
+    {} as MemberCreationsTwoProps
+  );
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   useLayoutEffect(() => {
@@ -61,9 +79,11 @@ const MemberContextProvider = ({ children }: { children: React.ReactNode }) => {
       memberregistrationData,
       setmemberregistrationData,
       currentPage,
-      setCurrentPage
+      setCurrentPage,
+      secondForm,
+      setsecondForm
     }),
-    [memberregistrationData, currentPage]
+    [memberregistrationData, currentPage, secondForm]
   );
 
   return (

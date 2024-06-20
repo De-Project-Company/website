@@ -16,8 +16,37 @@ const NewMemberSchema = z.object({
   address: z.string()
 });
 
+const MemberCreationsTwoSchema = z.object({
+  image: z.string().min(6, { message: 'Must be at least 6 characters long' }),
+  stack: z
+    .array(z.string().min(4, { message: 'Must be at least 6 characters long' }))
+    .nonempty({
+      message: "Can't be empty!"
+    }),
+  intrests: z
+    .string()
+    .min(6, { message: 'Must be at least 6 characters long' }),
+  portfolio: z
+    .string()
+    .min(6, { message: 'Must be at least 6 characters long' }),
+  experience: z
+    .string()
+    .min(6, { message: 'Must be at least 6 characters long' }),
+  expetations: z
+    .string()
+    .min(6, { message: 'Must be at least 6 characters long' }),
+  commetmentlevel: z.number(),
+  programminglanguage: z
+    .array(z.string().min(4, { message: 'Must be at least 6 characters long' }))
+    .nonempty({
+      message: "Can't be empty!"
+    }),
+  whatdoyoubringtothetable: z
+    .string()
+    .min(6, { message: 'Must be at least 6 characters long' })
+});
 const OtpSchema = z.object({
   otp: z.string()
 });
 
-export { NewMemberSchema, OtpSchema };
+export { NewMemberSchema, OtpSchema, MemberCreationsTwoSchema };
