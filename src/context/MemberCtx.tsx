@@ -1,6 +1,12 @@
 'use client';
 
-import React, { createContext, useContext, useMemo, useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useMemo,
+  useState,
+  useLayoutEffect
+} from 'react';
 
 interface MemberCreationProps {
   memberregistrationData: MemberCreationsProps;
@@ -39,6 +45,16 @@ const MemberContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [memberregistrationData, setmemberregistrationData] =
     useState<MemberCreationsProps>(defaultMemberData);
   const [currentPage, setCurrentPage] = useState<number>(1);
+
+  useLayoutEffect(() => {
+    const currentPage = window.localStorage.getItem('currentPage');
+
+    localStorage.setItem('currentPage', JSON.stringify(2));
+
+    if (currentPage) {
+      setCurrentPage(Number(currentPage));
+    }
+  }, []);
 
   const value = useMemo(
     () => ({

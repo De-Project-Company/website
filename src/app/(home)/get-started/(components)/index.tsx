@@ -152,7 +152,7 @@ const RegistrationFormOne = () => {
             preferedName: ''
           });
           setShowOtp(true);
-          window?.localStorage.setItem(
+          window?.sessionStorage.setItem(
             'MemberDetails',
             JSON.stringify(data.account)
           );
@@ -392,4 +392,24 @@ const RegistrationFormOne = () => {
   );
 };
 
-export { RegistrationNav, RegistrationFormOne };
+const RegistrationFormTwo = () => {
+  return <div>home</div>;
+};
+
+const CompleteForm = () => {
+  const { currentPage } = useMemberCtx();
+
+  return (
+    <>
+      {currentPage === 1 ? (
+        <RegistrationFormOne />
+      ) : currentPage === 2 ? (
+        <RegistrationFormTwo />
+      ) : (
+        <div>Default Content</div>
+      )}
+    </>
+  );
+};
+
+export { RegistrationNav, CompleteForm };

@@ -38,7 +38,7 @@ const OTPMODAL = ({ id, email }: { id?: string; email?: string }) => {
         });
 
         if (data.status === 200) {
-          window?.localStorage.setItem(
+          window?.sessionStorage.setItem(
             'MemberDetails',
             JSON.stringify(data.account)
           );
