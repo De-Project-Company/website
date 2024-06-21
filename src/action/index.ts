@@ -121,7 +121,7 @@ const getallmembers = async () => {
  * /api/v1/members/get-member-by-id?id=
  * */
 
-const getMemberById = async (id: string): Promise<Member | null> => {
+const getMemberById = async (id: string) => {
   try {
     const response = await $Http.get(
       `/api/v1/members/get-member-by-id?id=${id}`
@@ -149,11 +149,27 @@ const getAllProject = async () => {
   }
 };
 
+const getProjectById = async (id: string) => {
+  try {
+    const res = await $Http.get(`/api/v1/get-project-by-id?id=${id}`);
+    return {
+      status: res.status,
+      project: res.data
+    };
+  } catch (e: any) {
+    return {
+      message: e?.response?.data.message,
+      status: e?.response?.status
+    };
+  }
+};
+
 export {
   CreateUser,
   Otp,
   getallmembers,
   getAllProject,
   getMemberById,
+  getProjectById,
   completeRegistration
 };

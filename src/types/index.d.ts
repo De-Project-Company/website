@@ -41,6 +41,9 @@ interface Project {
   description: string;
   members: Member[];
   link: string;
+  createdAt?: string;
+  startDate?: string;
+  endDate?: string;
 }
 
 interface Publication {

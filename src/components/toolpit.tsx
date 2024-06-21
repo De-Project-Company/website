@@ -12,7 +12,12 @@ import {
 } from 'framer-motion';
 import { Member } from '@/types';
 
-export const AnimatedTooltip = ({ members }: { members: Member[] }) => {
+interface AnimatedProps {
+  members: Member[];
+  imageSizeTweek?: string;
+}
+
+export const AnimatedTooltip = ({ members, imageSizeTweek }: AnimatedProps) => {
   const [hoveredIndex, setHoveredIndex] = useState<string | null>(null);
   const springConfig = { stiffness: 100, damping: 5 };
   const x = useMotionValue(0);
@@ -89,7 +94,8 @@ export const AnimatedTooltip = ({ members }: { members: Member[] }) => {
                 : `https://ui-avatars.com/api/?name=${item.email}&background=random`
             }
             alt={item.fullName}
-            className="object-cover !m-0 !p-0 object-top rounded-full h-14 w-14 border-2 group-hover:scale-105 group-hover:z-30 border-white  relative transition duration-500"
+            className={` ${imageSizeTweek} object-cover !m-0 !p-0 object-top rounded-full h-14 w-14 border-2 group-hover:scale-105 
+            group-hover:z-30 border-white  relative transition duration-500`}
           />
         </div>
       ))}

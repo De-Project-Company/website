@@ -1,5 +1,4 @@
 'use client';
-
 import {
   Accordion,
   AccordionContent,
@@ -29,6 +28,9 @@ import { SpotlightButton } from '@/components/SpotlightButton';
 import { GoogleGeminiEffect } from '@/components/miscellaneous';
 import { AnimatedTooltip } from '@/components/toolpit';
 
+interface SingleProjectCardProps {
+  projects: Project[] | undefined;
+}
 const HeroSection = () => {
   return (
     <section className="">
@@ -853,7 +855,7 @@ const ProjectSection = () => {
     };
 
     fetchData();
-  }, []);
+  }, [projects]);
 
   return (
     <section
@@ -889,6 +891,58 @@ const ProjectSection = () => {
           />
         </Link>
       </div>
+    </section>
+  );
+};
+
+const SingleProjectCard: React.FC<SingleProjectCardProps> = ({ projects }) => {
+  console.log(projects);
+
+  return (
+    <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      {projects != null ? (
+        projects.map((project: Project) => (
+          <div key={project.id} className="relative">
+            <div
+              className="flex flex-col justify-between space-y-8 w-full h-full px-4 py-5 bg-[#220898] 
+              text-white font-bold text-xl bg-blend-overlay"
+              style={{
+                backgroundImage: `url(${project?.image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }}
+            >
+              <div className="space-y-3">
+                <h1>{project?.name}</h1>
+                <p className="text-xs line-2 font-light">
+                  {project?.description}
+                </p>
+              </div>
+              <div className="space-y-2">
+                {/* Team members */}
+                <div className="flex flex-row items-center">
+                  {/* Assuming AnimatedTooltip is defined elsewhere and accepts members and imageSizeTweek props */}
+                  <AnimatedTooltip
+                    members={project.members}
+                    imageSizeTweek="w-8 h-8"
+                  />
+                  <span className="ml-5 text-xs text-black font-poppins">
+                    + {project.members.length + 3}
+                  </span>
+                </div>
+                <Link
+                  href={`/projects/details?id=${project.id}`}
+                  className="block text-orange-400 hover:text-orange-600 hover:font-bold transition delay-100 duration-100 text-xs md:text-sm"
+                >
+                  Read More
+                </Link>
+              </div>
+            </div>
+          </div>
+        ))
+      ) : (
+        <p> Loading ...</p>
+      )}
     </section>
   );
 };
@@ -1009,6 +1063,7 @@ export {
   Trends,
   GimecEffect,
   ProjectSection,
+  SingleProjectCard,
   MobileHero,
   GlanceMob,
   PillarMob
