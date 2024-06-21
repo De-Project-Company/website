@@ -1,7 +1,11 @@
 /* eslint-disable */
 
 'use server';
-import { NewMemberSchema, OtpSchema } from '@/schemas';
+import {
+  NewMemberSchema,
+  OtpSchema,
+  MemberCreationsTwoSchema
+} from '@/schemas';
 import * as z from 'zod';
 import { Baseurl } from '@/utils';
 import Calls from './axios';
@@ -34,6 +38,37 @@ const CreateUser = async (values: z.infer<typeof NewMemberSchema>) => {
     return {
       status: res.status,
       account: res.data.data
+    };
+  } catch (e: any) {
+    return {
+      message: e?.response?.data.message,
+      status: e?.response?.status
+    };
+  }
+};
+
+const completeRegistration = async (
+  values: z.infer<typeof MemberCreationsTwoSchema>,
+  userId: string
+) => {
+  const validatedfeilds = MemberCreationsTwoSchema.safeParse(values);
+
+  if (!validatedfeilds.success) {
+    return {
+      message: 'check your input',
+      status: 401
+    };
+  }
+
+  try {
+    const res = await $Http.post(
+      `/api/v1/members/update-registraion?id=${userId}`,
+      validatedfeilds.data
+    );
+
+    return {
+      status: res.status,
+      account: res.data.member
     };
   } catch (e: any) {
     return {
@@ -135,5 +170,6 @@ export {
   getallmembers,
   getAllProject,
   getMemberById,
-  getProjectById
+  getProjectById,
+  completeRegistration
 };
