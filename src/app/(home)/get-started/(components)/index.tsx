@@ -1366,7 +1366,7 @@ const Page3 = () => {
                 {data?.stack.map(s => (
                   <span
                     key={s}
-                    className="px-2  font-medium text-xs line-clamp-1 md:text-base leading-7 text-gray-700 transition-all duration-500 group-hover:text-indigo-600"
+                    className="px-2  font-medium text-xs md:text-base md:leading-7 text-gray-700 transition-all duration-500 group-hover:text-indigo-600"
                   >
                     {s}
                   </span>
