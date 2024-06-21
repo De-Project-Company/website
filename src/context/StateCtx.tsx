@@ -7,6 +7,8 @@ interface StateContextProps {
   setShowMobileMenu: React.Dispatch<React.SetStateAction<boolean>>;
   ShowOtp: boolean;
   setShowOtp: React.Dispatch<React.SetStateAction<boolean>>;
+  errorModal: boolean;
+  setOpenErrorModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const StateContext = createContext({} as StateContextProps);
@@ -14,8 +16,9 @@ export const StateContext = createContext({} as StateContextProps);
 const StateContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [showMobileMenu, setShowMobileMenu] = React.useState(false);
   const [ShowOtp, setShowOtp] = React.useState(false);
+  const [errorModal, setOpenErrorModal] = React.useState(false);
 
-  const isAnyModalOpen = ShowOtp;
+  const isAnyModalOpen = ShowOtp || errorModal;
 
   const anyMobileSidebarOpen = showMobileMenu;
 
@@ -36,6 +39,7 @@ const StateContextProvider = ({ children }: { children: React.ReactNode }) => {
       if (e.key === 'Escape') {
         setShowMobileMenu(false);
         setShowOtp(false);
+        setOpenErrorModal(false);
       }
     };
 
@@ -51,9 +55,11 @@ const StateContextProvider = ({ children }: { children: React.ReactNode }) => {
       showMobileMenu,
       setShowMobileMenu,
       ShowOtp,
-      setShowOtp
+      setShowOtp,
+      errorModal,
+      setOpenErrorModal
     }),
-    [showMobileMenu, setShowMobileMenu, ShowOtp, setShowOtp]
+    [showMobileMenu, ShowOtp, errorModal]
   );
 
   return (

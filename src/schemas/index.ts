@@ -18,11 +18,10 @@ const NewMemberSchema = z.object({
 
 const MemberCreationsTwoSchema = z.object({
   image: z.string().min(6, { message: 'Must be at least 6 characters long' }),
-  stack: z
-    .array(z.string().min(4, { message: 'Must be at least 6 characters long' }))
-    .nonempty({
-      message: "Can't be empty!"
-    }),
+  mentor: z.boolean().default(false),
+  stack: z.array(z.string()).nonempty({
+    message: "Can't be empty!"
+  }),
   intrests: z
     .string()
     .min(6, { message: 'Must be at least 6 characters long' }),
@@ -36,11 +35,8 @@ const MemberCreationsTwoSchema = z.object({
     .string()
     .min(6, { message: 'Must be at least 6 characters long' }),
   commetmentlevel: z.number(),
-  programminglanguage: z
-    .array(z.string().min(4, { message: 'Must be at least 6 characters long' }))
-    .nonempty({
-      message: "Can't be empty!"
-    }),
+  programminglanguage: z.array(z.string()).optional(),
+
   whatdoyoubringtothetable: z
     .string()
     .min(6, { message: 'Must be at least 6 characters long' })

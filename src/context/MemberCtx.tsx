@@ -40,6 +40,7 @@ interface MemberCreationsTwoProps {
   commetmentlevel: number;
   programminglanguage: string[];
   whatdoyoubringtothetable: string;
+  mentor: boolean;
 }
 
 const defaultMemberData: MemberCreationsProps = {
@@ -52,6 +53,19 @@ const defaultMemberData: MemberCreationsProps = {
   preferedName: ''
 };
 
+const defaultMemberData2: MemberCreationsTwoProps = {
+  image: '', //
+  stack: [''],
+  intrests: '', //
+  portfolio: '', //
+  experience: '', //
+  expetations: '', //
+  commetmentlevel: 0, //
+  programminglanguage: [''],
+  whatdoyoubringtothetable: '', //
+  mentor: false //
+};
+
 export const MemberContext = createContext<MemberCreationProps | undefined>(
   undefined
 );
@@ -59,15 +73,12 @@ export const MemberContext = createContext<MemberCreationProps | undefined>(
 const MemberContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [memberregistrationData, setmemberregistrationData] =
     useState<MemberCreationsProps>(defaultMemberData);
-  const [secondForm, setsecondForm] = useState<MemberCreationsTwoProps>(
-    {} as MemberCreationsTwoProps
-  );
+  const [secondForm, setsecondForm] =
+    useState<MemberCreationsTwoProps>(defaultMemberData2);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   useLayoutEffect(() => {
     const currentPage = window.localStorage.getItem('currentPage');
-
-    localStorage.setItem('currentPage', JSON.stringify(2));
 
     if (currentPage) {
       setCurrentPage(Number(currentPage));

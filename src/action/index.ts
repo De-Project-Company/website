@@ -55,7 +55,8 @@ const completeRegistration = async (
 
   if (!validatedfeilds.success) {
     return {
-      message: 'check your input'
+      message: 'check your input',
+      status: 401
     };
   }
 
@@ -67,7 +68,7 @@ const completeRegistration = async (
 
     return {
       status: res.status,
-      account: res.data.data
+      account: res.data.member
     };
   } catch (e: any) {
     return {

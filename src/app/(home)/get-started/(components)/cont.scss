@@ -1,0 +1,19 @@
+/* Confetti effect styles */
+@keyframes confetti {
+  0% {
+    transform: translateY(0) rotateZ(0);
+  }
+  100% {
+    transform: translateY(200px) rotateZ(360deg);
+  }
+}
+
+.confetti {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+  animation: confetti 2s linear infinite;
+}
