@@ -1314,12 +1314,12 @@ const Page3 = () => {
     const existingData = window?.sessionStorage.getItem('UpdatedUser');
     if (existingData) {
       const data: Member = JSON.parse(existingData);
+      setData(data);
       toast({
         title: `Hi ${data.preferedName}`,
         description:
           'your request has been sent and you will be notified via email soon!'
       });
-      setData(data);
     }
   }, []);
 
