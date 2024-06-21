@@ -1307,11 +1307,18 @@ const RegistrationFormTwo = () => {
 };
 
 const Page3 = () => {
+  const { toast } = useToast();
+
   const [data, setData] = useState<Member>();
   useEffect(() => {
     const existingData = window?.sessionStorage.getItem('UpdatedUser');
     if (existingData) {
       const data: Member = JSON.parse(existingData);
+      toast({
+        title: `Hi ${data.preferedName}`,
+        description:
+          'your request has been sent and you will be notified via email soon!'
+      });
       setData(data);
     }
   }, []);
