@@ -1,14 +1,23 @@
 'use client';
 
-import React, { createContext, useContext, useMemo, useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useMemo,
+  useState,
+  useLayoutEffect
+} from 'react';
 
 interface MemberCreationProps {
   memberregistrationData: MemberCreationsProps;
   setmemberregistrationData: React.Dispatch<
     React.SetStateAction<MemberCreationsProps>
   >;
+
   currentPage: number;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  secondForm: MemberCreationsTwoProps;
+  setsecondForm: React.Dispatch<React.SetStateAction<MemberCreationsTwoProps>>;
 }
 
 interface MemberCreationsProps {
@@ -21,6 +30,19 @@ interface MemberCreationsProps {
   preferedName: string;
 }
 
+interface MemberCreationsTwoProps {
+  image: string;
+  stack: string[];
+  intrests: string;
+  portfolio: string;
+  experience: string;
+  expetations: string;
+  commetmentlevel: number;
+  programminglanguage: string[];
+  whatdoyoubringtothetable: string;
+  mentor: boolean;
+}
+
 const defaultMemberData: MemberCreationsProps = {
   fullName: '',
   email: '',
@@ -31,6 +53,19 @@ const defaultMemberData: MemberCreationsProps = {
   preferedName: ''
 };
 
+const defaultMemberData2: MemberCreationsTwoProps = {
+  image: '', //
+  stack: [''],
+  intrests: '', //
+  portfolio: '', //
+  experience: '', //
+  expetations: '', //
+  commetmentlevel: 0, //
+  programminglanguage: [''],
+  whatdoyoubringtothetable: '', //
+  mentor: false //
+};
+
 export const MemberContext = createContext<MemberCreationProps | undefined>(
   undefined
 );
@@ -38,16 +73,28 @@ export const MemberContext = createContext<MemberCreationProps | undefined>(
 const MemberContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [memberregistrationData, setmemberregistrationData] =
     useState<MemberCreationsProps>(defaultMemberData);
+  const [secondForm, setsecondForm] =
+    useState<MemberCreationsTwoProps>(defaultMemberData2);
   const [currentPage, setCurrentPage] = useState<number>(1);
+
+  useLayoutEffect(() => {
+    const currentPage = window.localStorage.getItem('currentPage');
+
+    if (currentPage) {
+      setCurrentPage(Number(currentPage));
+    }
+  }, []);
 
   const value = useMemo(
     () => ({
       memberregistrationData,
       setmemberregistrationData,
       currentPage,
-      setCurrentPage
+      setCurrentPage,
+      secondForm,
+      setsecondForm
     }),
-    [memberregistrationData, currentPage]
+    [memberregistrationData, currentPage, secondForm]
   );
 
   return (

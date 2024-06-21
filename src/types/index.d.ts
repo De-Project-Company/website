@@ -21,15 +21,11 @@ interface Member {
   otpExpires?: Date;
   verified: boolean;
   department?: string;
-  framworks?: Framework[];
+  programminglanguage: string[];
   socials?: Social[];
   projects?: Project[];
   publications?: Publication[];
-}
-
-interface Framework {
-  id: number;
-  framworks: string;
+  stack: string[];
 }
 
 interface Social {

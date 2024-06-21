@@ -1,11 +1,11 @@
 import React from 'react';
-import { RegistrationNav, RegistrationFormOne } from './(components)';
+import { RegistrationNav, CompleteForm } from './(components)';
 
 const page = () => {
   return (
     <>
       <RegistrationNav />
-      <RegistrationFormOne />
+      <CompleteForm />
     </>
   );
 };
