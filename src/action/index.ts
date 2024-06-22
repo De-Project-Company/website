@@ -164,6 +164,24 @@ const getProjectById = async (id: string) => {
   }
 };
 
+// resources page
+const getResources = async () => {
+  try{
+
+    const res = await $Http.get('/api/v1/publication');
+    return {
+      status: res.status,
+      publication: res?.data
+    }
+  } catch (err: any) {
+
+    return {
+      message: err?.response.data.message,
+      status: err?.response.status
+    }
+  }
+};
+
 export {
   CreateUser,
   Otp,
@@ -171,5 +189,6 @@ export {
   getAllProject,
   getMemberById,
   getProjectById,
-  completeRegistration
+  completeRegistration,
+  getResources
 };
