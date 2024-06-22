@@ -39,9 +39,9 @@ const Profile: React.FC<ProfileProps> = ({ id }) => {
       <Jumbotron className="bg-[url('/members/header_image.png')]" />
 
       {/*content*/}
-      <div className="context grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-8 px-10 md:px-0 md:w-[70%] mx-auto pb-10 ">
+      <div className="grid bg-[#F3F8FF] grid-cols-1 md:grid-cols-3 gap-3 md:gap-8 px-10 md:px-0 md:w-[70%] mx-auto pb-10 ">
         {/* overlapping card*/}
-        <div className="overlapping-card bg-[#F3F8FF]  w-[70%] md:w-[100%] mx-auto -translate-y-60 rounded-lg shadow-md pt-4 pb-6">
+        <div className="overlapping-card bg-[#F3F8FF] w-[70%] md:w-[100%] mx-auto -translate-y-60 rounded-lg shadow-md pt-4 pb-6">
           <div className="wrapper flex flex-col items-center space-y-4">
             <div className=" rounded-full relative border-0 overflow-hidden h-40 w-40">
               <Image
