@@ -17,7 +17,7 @@ import useInView from '@/hooks/useInView';
 import { cn, encryptString, shrinkString } from '@/utils';
 import { handleMouseEnter } from '@/utils/text-effect';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight2 } from 'iconsax-react';
+// import { ArrowRight2 } from 'iconsax-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -162,7 +162,7 @@ const PillarSection = () => {
               <span />
             </div>
             <div className="mt-7 text-6xl text-center leading-[57.6px] text-sky-950 max-md:max-w-full max-md:text-4xl w-full font-rama">
-              Our Pillars of Strenght
+              Our Pillars of Strength
             </div>
           </div>
           <div className="custom:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 6 my-12 gap-y-[70px] w-full hidden ">
@@ -255,13 +255,13 @@ const PillarCard = ({
             len: 100
           })}
         </div>
-        <Link
+        {/* <Link
           href="/"
           className="flex gap-3 mt-6 text-orange-400 leading-[104%]"
         >
           <div className="my-auto">View more</div>
           <ArrowRight2 />
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

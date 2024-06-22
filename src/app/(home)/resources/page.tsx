@@ -41,6 +41,7 @@ const ResourcesPage = () => {
 
   return (
     <>
+      {isPending ? "" : <div className='hidden'></div>}
       {/* Jumbotron */}
       <Jumbotron className="bg-[url('/resources/resources_page.png')]" />
 
