@@ -36,7 +36,7 @@ const Profile: React.FC<ProfileProps> = ({ id }) => {
   return (
     <>
       {/*jumbotron*/}
-      <Jumbotron className="bg-[url('/members/header_image.png')]" />
+      <Jumbotron className="bg-[url('/members/header_image.png')] bg-cover min-w-screen" />
 
       {/*content*/}
       <div className="grid bg-[#F3F8FF] grid-cols-1 md:grid-cols-3 gap-3 md:gap-8 px-10 md:px-0 md:w-[70%] mx-auto pb-10 ">

@@ -9,7 +9,7 @@ type JumbotronProps = {
 
 const Jumbotron = ({ className, children }: JumbotronProps) => {
   return (
-    <div className={cn('bg-no-repeat h-[343px] relative', className)}>
+    <div className={cn('bg-no-repeat h-[343px] relative w-screen', className)}>
       {children}
     </div>
   );
