@@ -671,12 +671,12 @@ const MemberSection = () => {
           </Carousel>
         </div>
       </div>
-      <InfiniteMovingCards
+      {/* <InfiniteMovingCards
         items={membersImage}
         direction="right"
         speed="normal"
         pauseOnHover={false}
-      />
+      /> */}
 
       <div className="w-full items-center justify-center flex">
         <Link href="/members" className="w-full">
