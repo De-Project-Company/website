@@ -40,7 +40,7 @@ const AllMemberTemplate: React.FC<AllMemberTemplate> = ({
           className="h-full w-full object-cover"
         />
       </Link>
-      <div className="flex flex-col ">
+      <div className="flex flex-col">
         <Link
           href={`/members/profile/details?id=${id}`}
           className="text-sm font-bold block"
@@ -61,7 +61,7 @@ const AllMemberTemplate: React.FC<AllMemberTemplate> = ({
 };
 
 const ProjectDetails: React.FC<ProfileProps> = ({ id }) => {
-  const [project, setProject] = useState({} as Project);
+  const [project, setProject] = useState( {} as Project );
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
