@@ -75,7 +75,7 @@ const ProjectDetails: React.FC<ProfileProps> = ({ id }) => {
     };
 
     fetchProject();
-  }, [id]);
+  }, []);
 
   const designers = useMemo(
     () => project?.members?.filter(member => member.department === 'design'),

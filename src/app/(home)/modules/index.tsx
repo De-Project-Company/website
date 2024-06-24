@@ -855,7 +855,7 @@ const ProjectSection = () => {
     };
 
     fetchData();
-  }, [projects]);
+  }, []);
 
   return (
     <section
