@@ -61,7 +61,7 @@ const AllMemberTemplate: React.FC<AllMemberTemplate> = ({
 };
 
 const ProjectDetails: React.FC<ProfileProps> = ({ id }) => {
-  const [project, setProject] = useState({} as Project);
+  const [project, setProject] = useState( {} as Project );
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
