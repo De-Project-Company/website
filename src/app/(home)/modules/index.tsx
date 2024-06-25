@@ -21,7 +21,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { InfiniteMovingCards } from './scrolllingimagess';
+// import { InfiniteMovingCards } from './scrolllingimagess';
 import { useState, useEffect } from 'react';
 import { getallmembers, getAllProject } from '@/action';
 import { SpotlightButton } from '@/components/SpotlightButton';
