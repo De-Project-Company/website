@@ -27,6 +27,7 @@ import { getallmembers, getAllProject } from '@/action';
 import { SpotlightButton } from '@/components/SpotlightButton';
 import { GoogleGeminiEffect } from '@/components/miscellaneous';
 import { AnimatedTooltip } from '@/components/toolpit';
+import { routes } from '../../../../lib/routes';
 
 interface SingleProjectCardProps {
   projects: Project[] | undefined;
@@ -242,14 +243,14 @@ const PillarCard = ({
         opacity: isInView ? 1 : 0,
         transition: 'transform 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s'
       }}
-      className="pillar-card min-w-[320px] min-h-[413px] max-w-[320px]"
+      className="pillar-card w-full max-w-[320px]"
     >
-      <div className="pillar-card2 flex flex-col items-center justify-center min-w-[320px] min-h-[413px]">
-        <Image src={image} alt={title} width={112} height={102} />
+      <div className="pillar-card2 flex-1 flex flex-col h-full py-16 items-center pt-auto w-full">
+        <Image src={image} alt={title} width={112} height={102} className='object-contain' />
         <div className="mt-5 text-2xl font-medium text-center text-sky-950 font-worksans">
           {title}
         </div>
-        <div className="text-[18px] p-4 font-medium text-center text-black">
+        <div className="text-[18px] p-4 font-medium flex-1 text-center text-black">
           {shrinkString({
             str: text,
             len: 100
@@ -498,7 +499,7 @@ const Trends = () => {
               </div>
               <div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
                 <Image
-                  src="/events2.png"
+                  src="/event-1.jpg"
                   alt="event"
                   width={434}
                   height={430}
@@ -507,7 +508,7 @@ const Trends = () => {
               </div>
               <div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
                 <Image
-                  src="/events2.png"
+                  src="/event-2.jpg"
                   alt="event"
                   width={434}
                   height={430}
@@ -519,7 +520,7 @@ const Trends = () => {
         </motion.div>
         <div className="w-full items-center justify-center flex">
           <Link
-            href="/members"
+            href={routes.events()}
             className="w-full items-center justify-center flex"
           >
             <SpotlightButton
