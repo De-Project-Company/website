@@ -358,38 +358,37 @@ const faq = [
   {
     id: 1,
     question: 'Welcoming Tech Haven:',
-    answer:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe, voluptas voluptatibus! Consequatur eligendi repudiandae, praesentium sapiente fugiat dolorem? Dignissimos tempore corporis, nemo quia deleniti culpa vero fuga explicabo velit ad!'
+    answer: "Open to All Levels: At Starters House, you'll find a welcoming community regardless of your experience. Whether you're a seasoned tech pro or just starting your journey, we believe everyone has something valuable to contribute."
   },
   {
     id: 2,
     question: 'Colaborative Spirit:',
     answer:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe, voluptas voluptatibus! Consequatur eligendi repudiandae, praesentium sapiente fugiat dolorem? Dignissimos tempore corporis, nemo quia deleniti culpa vero fuga explicabo velit ad!'
+      'Together We Achieve More: Our community thrives on collaboration. Share ideas, work on projects together, and leverage the collective knowledge of our members to reach your full potential'
   },
   {
     id: 3,
     question: 'Inclusive Atmosphere:',
     answer:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe, voluptas voluptatibus! Consequatur eligendi repudiandae, praesentium sapiente fugiat dolorem? Dignissimos tempore corporis, nemo quia deleniti culpa vero fuga explicabo velit ad!'
+      'Everyone Belongs: We believe in fostering a diverse and inclusive environment where everyone feels respected and valued. Bring your unique perspective and experiences to the table and learn from others with different backgrounds'
   },
   {
     id: 4,
     question: 'Continuous Learning:',
     answer:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe, voluptas voluptatibus! Consequatur eligendi repudiandae, praesentium sapiente fugiat dolorem? Dignissimos tempore corporis, nemo quia deleniti culpa vero fuga explicabo velit ad!'
+      'Never Stop Growing: Starters House is dedicated to continuous learning. We offer workshops, events, and resources to help you stay ahead of the curve and develop your tech skills. '
   },
   {
     id: 5,
     question: 'Diverse Perspective:',
     answer:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe, voluptas voluptatibus! Consequatur eligendi repudiandae, praesentium sapiente fugiat dolorem? Dignissimos tempore corporis, nemo quia deleniti culpa vero fuga explicabo velit ad!'
+      ' See the Bigger Picture: Learn from a wide range of experiences and ideas. Our diverse community provides unique viewpoints that can spark innovation and help you solve problems from new angles.'
   },
   {
     id: 6,
     question: 'Supportive Environment:',
     answer:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Saepe, voluptas voluptatibus! Consequatur eligendi repudiandae, praesentium sapiente fugiat dolorem? Dignissimos tempore corporis, nemo quia deleniti culpa vero fuga explicabo velit ad!'
+      "We're Here for You: Starters House provides a supportive environment where you can ask questions, get help, and find encouragement. We believe in empowering each other to succeed."
   }
 ];
 
@@ -856,7 +855,7 @@ const ProjectSection = () => {
     };
 
     fetchData();
-  }, [projects]);
+  }, []);
 
   return (
     <section

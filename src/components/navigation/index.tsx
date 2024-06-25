@@ -11,6 +11,7 @@ import { FiChevronDown } from 'react-icons/fi';
 import { AboutUs, Events, Formus } from './NavContent';
 import { Button } from '../ui/button';
 import { AnimatedHamburgerButton } from './navbutton';
+import Image from 'next/image';
 
 const Tab = ({
   children,
@@ -203,11 +204,18 @@ const NavigationBar = () => {
         <Link
           href="/?path=home"
           className={cn(
-            ' max-sm:w-[120px] max-[450px]:w-[100px] font-montserrat max-h-[55px] object-contain',
+            ' max-sm:w-[120px] max-[450px]:w-[100px] font-montserrat max-h-[55px] object-contain flex items-center',
             scrollHeight > 200 ? 'w-[120px] ' : 'w-fit'
           )}
         >
-          <span>Starter House</span>
+          <Image
+            src="/logo/startersHouseWbg.png"
+            alt=""
+            height={100}
+            width={100}
+            className="h-[100px] w-[100px] object-cover"
+          />
+          {/* <span>Starter House</span> */}
         </Link>
         <div
           className={cn(
