@@ -903,8 +903,8 @@ const SingleProjectCard: React.FC<SingleProjectCardProps> = ({ projects }) => {
         projects.map((project: Project) => (
           <div key={project.id} className="relative">
             <div
-              className="flex flex-col justify-between space-y-8 w-full h-full px-4 py-5 bg-[#220898] 
-              text-white font-bold text-xl bg-blend-overlay"
+              className="flex flex-col justify-between space-y-8 w-full h-full px-4 py-5 rounded-md
+              text-white black/50 font-bold text-xl bg-blend-overlay bg-gray-900 border "
               style={{
                 backgroundImage: `url(${project?.image})`,
                 backgroundSize: 'cover',
