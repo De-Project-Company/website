@@ -242,9 +242,9 @@ const PillarCard = ({
         opacity: isInView ? 1 : 0,
         transition: 'transform 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s'
       }}
-      className="pillar-card min-w-[320px] min-h-[413px] max-w-[320px]"
+      className="pillar-card min-w-[320px] min-h-[320px] max-w-[320px]"
     >
-      <div className="pillar-card2 flex flex-col items-center justify-center min-w-[320px] min-h-[413px]">
+      <div className="pillar-card2 flex flex-col items-center justify-center min-w-[320px] min-h-[320px]">
         <Image src={image} alt={title} width={112} height={102} />
         <div className="mt-5 text-2xl font-medium text-center text-sky-950 font-worksans">
           {title}
@@ -895,7 +895,7 @@ const ProjectSection = () => {
 };
 
 const SingleProjectCard: React.FC<SingleProjectCardProps> = ({ projects }) => {
-  console.log(projects);
+  // console.log(projects);
 
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
