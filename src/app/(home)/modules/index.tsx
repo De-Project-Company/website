@@ -21,12 +21,13 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { InfiniteMovingCards } from './scrolllingimagess';
+// import { InfiniteMovingCards } from './scrolllingimagess';
 import { useState, useEffect } from 'react';
 import { getallmembers, getAllProject } from '@/action';
 import { SpotlightButton } from '@/components/SpotlightButton';
 import { GoogleGeminiEffect } from '@/components/miscellaneous';
 import { AnimatedTooltip } from '@/components/toolpit';
+import { routes } from '../../../../lib/routes';
 
 interface SingleProjectCardProps {
   projects: Project[] | undefined;
@@ -242,14 +243,17 @@ const PillarCard = ({
         opacity: isInView ? 1 : 0,
         transition: 'transform 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5s'
       }}
+
       className="pillar-card min-w-[320px] min-h-[320px] max-w-[320px] mt-5 md:mt-0"
     >
       <div className="pillar-card2 flex flex-col items-center justify-center min-w-[320px] min-h-[320px] shadow-lg   md:shadow-0 rounded-md md:rounded-0">
         <Image src={image} alt={title} width={112} height={102} />
+    >
+
         <div className="mt-5 text-2xl font-medium text-center text-sky-950 font-worksans">
           {title}
         </div>
-        <div className="text-[18px] p-4 font-medium text-center text-black">
+        <div className="text-[18px] p-4 font-medium flex-1 text-center text-black">
           {shrinkString({
             str: text,
             len: 100
@@ -497,7 +501,7 @@ const Trends = () => {
               </div>
               <div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
                 <Image
-                  src="/events2.png"
+                  src="/event-1.jpg"
                   alt="event"
                   width={434}
                   height={430}
@@ -506,7 +510,7 @@ const Trends = () => {
               </div>
               <div className="flex flex-col ml-5 w-[33%] max-md:ml-0 max-md:w-full">
                 <Image
-                  src="/events2.png"
+                  src="/event-2.jpg"
                   alt="event"
                   width={434}
                   height={430}
@@ -518,7 +522,7 @@ const Trends = () => {
         </motion.div>
         <div className="w-full items-center justify-center flex">
           <Link
-            href="/members"
+            href={routes.events()}
             className="w-full items-center justify-center flex"
           >
             <SpotlightButton
@@ -670,12 +674,12 @@ const MemberSection = () => {
           </Carousel>
         </div>
       </div>
-      <InfiniteMovingCards
+      {/* <InfiniteMovingCards
         items={membersImage}
         direction="right"
         speed="normal"
         pauseOnHover={false}
-      />
+      /> */}
 
       <div className="w-full items-center justify-center flex">
         <Link href="/members" className="w-full">

@@ -6,7 +6,7 @@ import { cn } from '@/utils';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { useState, useTransition, useEffect, useRef } from 'react';
+import React, { useState, useTransition, useEffect, useRef } from 'react';
 import { NewMemberSchema, MemberCreationsTwoSchema } from '@/schemas';
 import { CreateUser, completeRegistration } from '@/action';
 import { useStateCtx } from '@/context/StateCtx';
@@ -19,6 +19,10 @@ import { Switch } from '@/components/ui/switch';
 import { Slider } from '@/components/ui/slider';
 import { MultiSelect } from '@/components/ui/multiSelect';
 import './cont.scss';
+import dynamic from 'next/dynamic';
+import useWindowSize from "react-use/lib/useWindowSize";
+const Confetti = dynamic(() => import("react-confetti"), { ssr: false });
+
 
 type CloudinaryAsset = {
   asset_id: string;
@@ -52,13 +56,7 @@ type StackOption = {
   options: Option[];
 };
 
-export type UploadResult = {
-  info: {
-    public_id: string;
-    original_filename: string;
-  };
-  event: 'success';
-};
+
 
 const RegistrationNav = () => {
   const { currentPage } = useMemberCtx();
@@ -731,7 +729,7 @@ const RegistrationFormTwo = () => {
         { label: 'MongoDB', value: 'MongoDB' },
         { label: 'MySQL', value: 'MySQL' },
         { label: 'Oracle', value: 'Oracle' },
-        { label: 'PostgreSQL', value: 'PostgreSQL' },
+        { label: 'PostgresSQL', value: 'PostgresSQL' },
         { label: 'SQL', value: 'SQL' }
       ]
     },
@@ -1308,6 +1306,8 @@ const RegistrationFormTwo = () => {
 
 const Page3 = () => {
   const { toast } = useToast();
+  const { width, height } = useWindowSize();
+  const [showConfetti, setShowConfetti] = useState(true);
 
   const [data, setData] = useState<Member>();
   useEffect(() => {
@@ -1320,11 +1320,24 @@ const Page3 = () => {
         description:
           'your request has been sent and you will be notified via email soon!'
       });
+      const timer = setTimeout(() => {
+        setShowConfetti(false);
+      }, 10000);
+
+      return () => clearTimeout(timer);
     }
   }, []);
 
+
+
   return (
-    <main className="cont min-h-screen">
+    <main className="min-h-screen">
+      {showConfetti && (
+        <div className="fixed inset-0 w-full min-h-screen z-[9999999] pointer-events-none">
+          <Confetti numberOfPieces={500} width={width} height={height} />
+        </div>
+      ) }
+
       <section className="relative pt-40 pb-24 bg-white">
         <Image
           src="/profile.png"
@@ -1353,7 +1366,8 @@ const Page3 = () => {
                 {data?.address}
               </p>
             </div>
-            <div className="rounded-full py-3.5 px-5 bg-gray-100 flex items-center group transition-all duration-500 hover:bg-indigo-100 ">
+            <div
+              className="rounded-full py-3.5 px-5 bg-gray-100 flex items-center group transition-all duration-500 hover:bg-indigo-100 ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="20"
